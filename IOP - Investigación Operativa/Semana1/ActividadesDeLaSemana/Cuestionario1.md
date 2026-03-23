@@ -45,7 +45,7 @@ $$12\ \frac{[Horas]}{[Unidad]}\ M_1\ [Unidad]\ +\ 8\ \frac{[Horas]}{[Unidad]}\ M
 
 ### Restriccion de no nulidad
 
-$\forall x_j \geq 0 $ tal que j = (1, 2, ..., n)
+$\forall M_j \geq 0 $ tal que j = (1, 2, ..., n)
 
 ## Pregunta 1
 
