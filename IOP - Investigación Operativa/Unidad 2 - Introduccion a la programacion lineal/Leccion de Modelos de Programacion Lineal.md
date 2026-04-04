@@ -19,7 +19,7 @@ $$a_{m1} x_1 + a_{m2} x_2 + ... + a_{mn} x_n = b_m$$
 
 Restriccion de no negatividad
 
-$\forall x_j \geq 0 $ tal que j = (1, 2, ..., n)
+$\forall x_j \geq 0$ tal que j = (1, 2, ..., n)
 
 ## 2. Primer paso en la formulación de modelos
 
