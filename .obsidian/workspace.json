@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/Plantilla.md",
+                "file": "IOP - Investigación Operativa/Resumenes/BasePractico.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Plantilla"
+              "title": "BasePractico"
             }
           },
           {
@@ -92,7 +92,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "18bf7723392a6339",
@@ -196,8 +197,10 @@
   },
   "active": "245304bab78aeed0",
   "lastOpenFiles": [
-    "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/1.4 - Establecimiento El Tala.md",
+    "Pasted image 20260410101959.png",
+    "Pasted image 20260410101341.png",
     "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/Plantilla.md",
+    "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/1.4 - Establecimiento El Tala.md",
     "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/1.3 - Industrias Vandelay.md",
     "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/1.2 - Industrias Veidile.md",
     "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/1.1 - Chemical Sun S.A..md",

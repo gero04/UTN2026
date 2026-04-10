@@ -45,5 +45,22 @@ Ahora vamos a plantear dos maneras de resolver el problema: el metodo grafico y 
 
 Vamos a graficar todas las restricciones, para esto lo mas facil es plantear a una variable como $x$ y a la otra como $y$, y luego hacerlas valer 0 alternativamente, esto nos va a dar dos conjuntos de puntos: [x, 0] ó [x1, 0] e [0, y] ó [0, x2]. Es decir
 
-- Para la primera restriccion ($4 M_1 + 8 M_2 \leq\ 480$) nos quedan [120, 0] y [0, 60]
-- Para la segunda restriccion ($5\ M_1\ +\ 6\ M_2 \leq\ 600$) nos quedan [120, 0] y []
+- Para la primera restriccion ($4 M_1 + 8 M_2 \leq\ 480$) nos quedan $[120, 0]$ y $[0, 60]$
+- Para la segunda restriccion ($5\ M_1\ +\ 6\ M_2 \leq\ 600$) nos quedan $[120, 0]$ y $[0, 100]$
+- Para la tercera restriccion ($12\ M_1\ +\ 8\ M_2\ \leq\ 540$) nos quedan $[45, 0]$ y $[0, 67.5]$
+
+> [TIP]
+> El calculo de una recta dada por dos puntos se realiza calculando primero la pendiente $m = \frac{y_2 - y_1}{x_2 - x_1}$ y luego la ecuacion punto pendiente $y - y_1 = m * (x - x_1)$. Con estas dos terminamos despejando para obtener la forma $y = m*x + b$ 
+
+Con estos puntos podemos trazar rectas que representan las restricciones, y teniendo en cuenta que vamos a trabajar tambien con la restriccion de no nulidad (lo cual nos ubica el campo de trabajo en el primer cuadrante), graficamente tenemos lo siguiente
+
+![[Pasted image 20260410101959.png]]
+
+Aca nos encontramos con la *region factible*, que es el conjunto de puntos que es solucion a todas las inecuaciones del sistema de restricciones del PL. En este caso, es el poligono formado por los puntos A, B, C y D. Estos puntos van a conformar los posibles puntos optimos de nuestra funcion, entonces evaluamos la funcion en ellos y la que de un Z mas grande es el punto optimo
+
+- Para $A= [0, 0]$: $\longrightarrow Z = 100 * 0 + 120 * 0 \longrightarrow Z = 0$ 
+- Para $B = [50, 0] : \longrightarrow Z = 100 * 50 + 120 * 0 \longrightarrow Z = 5000$
+- Para $C = [15, 53] : \longrightarrow Z = 100 * 15 + 120 * 53 \longrightarrow Z = 7860$
+- Para $D = [0, 60] : \longrightarrow Z = 100 * 0 + 120 * 60 \longrightarrow Z = 7200$
+Entonces comprobamos que el punto optimo de Z es $C = [15, 53]$ 
+  
