@@ -54,13 +54,7 @@ Vamos a graficar todas las restricciones, para esto lo mas facil es plantear a u
 
 Con estos puntos podemos trazar rectas que representan las restricciones, y teniendo en cuenta que vamos a trabajar tambien con la restriccion de no nulidad (lo cual nos ubica el campo de trabajo en el primer cuadrante), graficamente tenemos lo siguiente
 
-![[Pasted image 20260410101959.png]]
+![[Pasted image 20260412172334.png]]
 
-Aca nos encontramos con la *region factible*, que es el conjunto de puntos que es solucion a todas las inecuaciones del sistema de restricciones del PL. En este caso, es el poligono formado por los puntos A, B, C y D. Estos puntos van a conformar los posibles puntos optimos de nuestra funcion, entonces evaluamos la funcion en ellos y la que de un Z mas grande es el punto optimo
-
-- Para $A= [0, 0]$: $\longrightarrow Z = 100 * 0 + 120 * 0 \longrightarrow Z = 0$ 
-- Para $B = [50, 0] : \longrightarrow Z = 100 * 50 + 120 * 0 \longrightarrow Z = 5000$
-- Para $C = [15, 53] : \longrightarrow Z = 100 * 15 + 120 * 53 \longrightarrow Z = 7860$
-- Para $D = [0, 60] : \longrightarrow Z = 100 * 0 + 120 * 60 \longrightarrow Z = 7200$
-Entonces comprobamos que el punto optimo de Z es $C = [15, 53]$ 
+Aca nos encontramos con la *region factible*, que es el conjunto de puntos que es solucion a todas las inecuaciones del sistema de restricciones del PL. En este caso, es el poligono formado por los puntos A, B, C y D. Estos puntos van a conformar los posibles puntos optimos de nuestra funcion, y lo unico que nos queda graficar es la funcion objetivo. Para esto, hacemos el mismo proceso que con las restricciones, pero en este caso vamos a igualar a 0 la funcion
   
