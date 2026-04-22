@@ -1,6 +1,6 @@
 # **Diseño y Cálculo de Subredes (Subnetting) \- Enfoque en IPv4**
 
-**Materia:** Redes de Computadoras
+**Materia:** Redes de Datos
 **Resumen en una oración:** La clase profundiza en el diseño de subredes para optimizar topologías de red, enseñando a calcular máscaras, rangos de IPs válidas y direcciones de broadcast mediante el préstamo de bits (de host a red), con ejemplos prácticos paso a paso en redes Clase A y B.
 
 ## **Conceptos clave**
@@ -66,7 +66,7 @@ Para explicar la congestión por broadcast, el docente usó un ejemplo físico: 
 
 ### **Ejemplo 2: Clase B prestando 4 bits (Prefijo /20)**
 
-* **Red base:** 180.5.0.0 /16  
+* **Red base:** 180.5.0.0 /20  
 * **Préstamo:** 4 bits del tercer octeto. Subredes generadas: $2^4 = 16$.  
 * **Máscara:** 255.255.240.0 (11110000 \= 128+64+32+16 \= 240).  
 * **Saltos:** Los bits cambian en el valor del bit prestado de menor peso (en este caso, 16). Las subredes van saltando de a 16: 180.5.0.0, 180.5.16.0, 180.5.32.0, 180.5.48.0...  
