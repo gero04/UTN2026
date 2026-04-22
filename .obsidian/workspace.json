@@ -4,33 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "a3b11f3602d30767",
+        "id": "09b1aa6a19fcdf2e",
         "type": "tabs",
         "children": [
           {
-            "id": "245304bab78aeed0",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "IOP - Investigación Operativa/Bibliografia/GUIA DE CASOS Y PROBLEMAS - 2026 -.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "GUIA DE CASOS Y PROBLEMAS - 2026 -"
-            }
-          },
-          {
-            "id": "2741888e06f28cc0",
+            "id": "b2ed500ecd173d5d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/1.3 - Industrias Vandelay.md",
+                "file": "RED - Redes de Datos/Unidad 3 - Capa de Interred y direccionamiento/Subredes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1.3 - Industrias Vandelay"
+              "title": "Subredes"
             }
           }
         ]
@@ -193,12 +181,17 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "245304bab78aeed0",
+  "active": "b2ed500ecd173d5d",
   "lastOpenFiles": [
+    "RED - Redes de Datos/Unidad 3 - Capa de Interred y direccionamiento/Subredes.md",
+    "RED - Redes de Datos/Unidad 3 - Capa de Interred y direccionamiento/Direccionamiento IP.md",
+    "RED - Redes de Datos/Unidad 3 - Capa de Interred y direccionamiento",
+    "IOP - Investigación Operativa/Unidad 3 - Programacion Lineal/Programación Lineal y Simplex.md",
+    "IOP - Investigación Operativa/Unidad 3 - Programacion Lineal",
+    "IOP - Investigación Operativa/Bibliografia/GUIA DE CASOS Y PROBLEMAS - 2026 -.pdf",
     "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/1.1 - Chemical Sun S.A..md",
     "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/1.3 - Industrias Vandelay.md",
     "IOP - Investigación Operativa/Unidad 1 - Metodologia de la investigacion/Guia de estudio - Unidad 1.md",
-    "IOP - Investigación Operativa/Bibliografia/GUIA DE CASOS Y PROBLEMAS - 2026 -.pdf",
     "IOP - Investigación Operativa/Resumenes/BasePractico.md",
     "Pasted image 20260412172334.png",
     "Pasted image 20260410101959.png",
@@ -220,8 +213,6 @@
     "SIM - Simulacion/Unidad 3/04 - Método de la transformada inversa.pdf",
     "SIM - Simulacion/Unidad 3/Transformada Inversa.md",
     "SIM - Simulacion/Unidad 3/Guia de ejercicios SIM Unidad 3.pdf",
-    "SIM - Simulacion/Unidad 3/06 - Ejercitación de pruebas de bondad de ajuste.pdf",
-    "SIM - Simulacion/Unidad 2/01 - Números Pseudoaleatorios.pdf",
     "SIM - Simulacion/Unidad 2/Numeros pseudoaleatorios y pruebas de bondad de ajuste.md",
     "SIM - Simulacion/Unidad 1/Introduccion a la materia y conceptos teoricos.md",
     "RED - Redes de Datos/Semana1/RED25032026.md",
