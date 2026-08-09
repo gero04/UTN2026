@@ -1,0 +1,676 @@
+diagram:
+  columns: 30
+  rows: 30
+
+icons:
+
+  ### EDIFICIO 1
+  R1: {x: 0, y: 7, iconFamily: "Cisco", icon: "router"}
+  E1SWBase: {x: 0, y: 10, iconFamily: "Cisco", icon: "Workgroup_switch"}
+  E1SW1: {x: 2, y: 9, iconFamily: "Cisco", icon: "Workgroup_switch"}
+  E1SW2: {x: 2, y: 13, iconFamily: "Cisco", icon: "Workgroup_switch"}
+  E1SW3: {x: 2, y: 17, iconFamily: "Cisco", icon: "Workgroup_switch"}
+  E1SW4: {x: 2, y: 21, iconFamily: "Cisco", icon: "Workgroup_switch"}
+  E1SW5: {x: 2, y: 25, iconFamily: "Cisco", icon: "Workgroup_switch"}
+  E1AP: {x: 2, y:  7, iconFamily: "Cisco", icon: "AccessPoint"}
+
+  # EDIFICIO 1 - Oficina 1
+  O1COMP1: {x: 4, y: 8, iconFamily: "Cisco", icon: "PC"}
+  O1COMP2: {x: 5, y: 8, iconFamily: "Cisco", icon: "PC"}
+  O1COMP3: {x: 6, y: 8, iconFamily: "Cisco", icon: "PC"}
+  O1COMP4: {x: 7, y: 8, iconFamily: "Cisco", icon: "PC"}
+  O1COMP5: {x: 8, y: 8, iconFamily: "Cisco", icon: "PC"}
+  O1IMP: {x: 9, y: 8, iconFamily: "Cisco", icon: "Printer"}
+
+  # EDIFICIO 1 - Oficina 2
+  O2COMP1: {x: 4, y: 10, iconFamily: "Cisco", icon: "PC"}
+  O2COMP2: {x: 5, y: 10, iconFamily: "Cisco", icon: "PC"}
+  O2COMP3: {x: 6, y: 10, iconFamily: "Cisco", icon: "PC"}
+  O2COMP4: {x: 7, y: 10, iconFamily: "Cisco", icon: "PC"}
+  O2COMP5: {x: 8, y: 10, iconFamily: "Cisco", icon: "PC"}
+  O2IMP: {x: 9, y: 10, iconFamily: "Cisco", icon: "Printer"}
+
+  # EDIFICIO 1 - Oficina 3
+  O3COMP1: {x: 4, y: 12, iconFamily: "Cisco", icon: "PC"}
+  O3COMP2: {x: 5, y: 12, iconFamily: "Cisco", icon: "PC"}
+  O3COMP3: {x: 6, y: 12, iconFamily: "Cisco", icon: "PC"}
+  O3COMP4: {x: 7, y: 12, iconFamily: "Cisco", icon: "PC"}
+  O3COMP5: {x: 8, y: 12, iconFamily: "Cisco", icon: "PC"}
+  O3IMP: {x: 9, y: 12, iconFamily: "Cisco", icon: "Printer"}
+
+  # EDIFICIO 1 - Oficina 4
+  O4COMP1: {x: 4, y: 14, iconFamily: "Cisco", icon: "PC"}
+  O4COMP2: {x: 5, y: 14, iconFamily: "Cisco", icon: "PC"}
+  O4COMP3: {x: 6, y: 14, iconFamily: "Cisco", icon: "PC"}
+  O4COMP4: {x: 7, y: 14, iconFamily: "Cisco", icon: "PC"}
+  O4COMP5: {x: 8, y: 14, iconFamily: "Cisco", icon: "PC"}
+  O4IMP: {x: 9, y: 14, iconFamily: "Cisco", icon: "Printer"}
+
+  # EDIFICIO 1 - Oficina 5
+  O5COMP1: {x: 4, y: 16, iconFamily: "Cisco", icon: "PC"}
+  O5COMP2: {x: 5, y: 16, iconFamily: "Cisco", icon: "PC"}
+  O5COMP3: {x: 6, y: 16, iconFamily: "Cisco", icon: "PC"}
+  O5COMP4: {x: 7, y: 16, iconFamily: "Cisco", icon: "PC"}
+  O5COMP5: {x: 8, y: 16, iconFamily: "Cisco", icon: "PC"}
+  O5IMP: {x: 9, y: 16, iconFamily: "Cisco", icon: "Printer"}
+
+  # EDIFICIO 1 - Oficina 6
+  O6COMP1: {x: 4, y: 18, iconFamily: "Cisco", icon: "PC"}
+  O6COMP2: {x: 5, y: 18, iconFamily: "Cisco", icon: "PC"}
+  O6COMP3: {x: 6, y: 18, iconFamily: "Cisco", icon: "PC"}
+  O6COMP4: {x: 7, y: 18, iconFamily: "Cisco", icon: "PC"}
+  O6COMP5: {x: 8, y: 18, iconFamily: "Cisco", icon: "PC"}
+  O6IMP: {x: 9, y: 18, iconFamily: "Cisco", icon: "Printer"}
+
+  # EDIFICIO 1 - Oficina 7
+  O7COMP1: {x: 4, y: 20, iconFamily: "Cisco", icon: "PC"}
+  O7COMP2: {x: 5, y: 20, iconFamily: "Cisco", icon: "PC"}
+  O7COMP3: {x: 6, y: 20, iconFamily: "Cisco", icon: "PC"}
+  O7COMP4: {x: 7, y: 20, iconFamily: "Cisco", icon: "PC"}
+  O7COMP5: {x: 8, y: 20, iconFamily: "Cisco", icon: "PC"}
+  O7IMP: {x: 9, y: 20, iconFamily: "Cisco", icon: "Printer"}
+
+  # EDIFICIO 1 - Oficina 8
+  O8COMP1: {x: 4, y: 22, iconFamily: "Cisco", icon: "PC"}
+  O8COMP2: {x: 5, y: 22, iconFamily: "Cisco", icon: "PC"}
+  O8COMP3: {x: 6, y: 22, iconFamily: "Cisco", icon: "PC"}
+  O8COMP4: {x: 7, y: 22, iconFamily: "Cisco", icon: "PC"}
+  O8COMP5: {x: 8, y: 22, iconFamily: "Cisco", icon: "PC"}
+  O8IMP: {x: 9, y: 22, iconFamily: "Cisco", icon: "Printer"}
+
+  # EDIFICIO 1 - Oficina 9
+  O9COMP1: {x: 4, y: 24, iconFamily: "Cisco", icon: "PC"}
+  O9COMP2: {x: 5, y: 24, iconFamily: "Cisco", icon: "PC"}
+  O9COMP3: {x: 6, y: 24, iconFamily: "Cisco", icon: "PC"}
+  O9COMP4: {x: 7, y: 24, iconFamily: "Cisco", icon: "PC"}
+  O9COMP5: {x: 8, y: 24, iconFamily: "Cisco", icon: "PC"}
+  O9IMP: {x: 9, y: 24, iconFamily: "Cisco", icon: "Printer"}
+
+  # EDIFICIO 1 - Oficina 10
+  O10COMP1: {x: 4, y: 26, iconFamily: "Cisco", icon: "PC"}
+  O10COMP2: {x: 5, y: 26, iconFamily: "Cisco", icon: "PC"}
+  O10COMP3: {x: 6, y: 26, iconFamily: "Cisco", icon: "PC"}
+  O10COMP4: {x: 7, y: 26, iconFamily: "Cisco", icon: "PC"}
+  O10COMP5: {x: 8, y: 26, iconFamily: "Cisco", icon: "PC"}
+  O10IMP: {x: 9, y: 26, iconFamily: "Cisco", icon: "Printer"}
+
+
+
+  ### EDIFICIO 2
+  R2: {x: 7, y: 0, iconFamily: "Cisco", icon: "router"}
+  E2SW1: {x: 5.5, y: 1.5, iconFamily: "Cisco", icon: "Workgroup_switch"}
+  E2SW2: {x: 8.5, y: 1.5, iconFamily: "Cisco", icon: "Workgroup_switch"}
+  E2Aula1: { x: 0, y: 2.5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula2:  { x: 1, y: 2.5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula3:  { x: 2, y: 2.5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula4:  { x: 3, y: 2.5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula5:  { x: 4, y: 2.5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula6:  { x: 0, y: 5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula7:  { x: 1, y: 5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula8:  { x: 2, y: 5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula9:  { x: 3, y: 5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula10: { x: 4, y: 5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula11: { x: 10, y: 2.5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula12: { x: 11, y: 2.5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula13: { x: 12, y: 2.5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula14: { x: 13, y: 2.5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula15: { x: 14, y: 2.5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula16: { x: 10, y: 5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula17: { x: 11, y: 5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula18: { x: 12, y: 5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula19: { x: 13, y: 5, iconFamily: "Cisco", icon: "PC" }
+  E2Aula20: { x: 14, y: 5, iconFamily: "Cisco", icon: "PC" }
+  E2AP: {x: 7, y:  1.5, iconFamily: "Cisco", icon: "AccessPoint"}
+
+  ### EDIFICIO 3
+  R3: {x: 11, y: 7, iconFamily: "Cisco", icon: "router"}
+  E3SW1: {x: 13, y: 7, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 1 Lab 1 a 5"}
+  E3SW2: {x: 13, y: 13, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 2 Lab 6 a 10"}
+
+  E3SW1/1: {x: 13, y: 9, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 1/1 Lab 1"}
+  E3PCL1P1: {x: 12.5, y: 11, iconFamily: "Cisco", icon: "PC", text: "Equipos 1 a 15"}
+  E3IMPL1: {x: 13.5, y: 11, iconFamily: "Cisco", icon: "Printer", text: "Impresora Lab 1"}
+  
+  E3SW1/2: {x: 14.5, y: 9, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 1/2 Lab 1"}
+  E3PCL1P2: {x: 14.5, y: 11, iconFamily: "Cisco", icon: "PC", text: "Equipos 16 a 30"}
+
+  E3SW1/3: {x: 16, y: 9, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 1/3 Lab 2"}
+  E3PCL2P1: {x: 15.5, y: 11, iconFamily: "Cisco", icon: "PC", text: "Equipos 1 a 15"}
+  E3IMPL2: {x: 16.5, y: 11, iconFamily: "Cisco", icon: "Printer", text: "Impresora Lab 2"}
+
+  E3SW1/4: {x: 17.5, y: 9, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 1/4 Lab 2"}
+  E3PCL2P2: {x: 17.5, y: 11, iconFamily: "Cisco", icon: "PC", text: "Equipos 16 a 30"}
+
+  E3SW1/5: {x: 19, y: 9, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 1/5 Lab 3"}
+  E3PCL3P1: {x: 18.5, y: 11, iconFamily: "Cisco", icon: "PC", text: "Equipos 1 a 15"}
+  E3IMPL3: {x: 19.5, y: 11, iconFamily: "Cisco", icon: "Printer", text: "Impresora Lab 3"}
+
+  E3SW1/6: {x: 20.5, y: 9, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 1/6 Lab 3"}
+  E3PCL3P2: {x: 20.5, y: 11, iconFamily: "Cisco", icon: "PC", text: "Equipos 16 a 30"}
+
+  E3SW1/7: {x: 22, y: 9, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 1/7 Lab 4"}
+  E3PCL4P1: {x: 21.5, y: 11, iconFamily: "Cisco", icon: "PC", text: "Equipos 1 a 15"}
+  E3IMPL4: {x: 22.5, y: 11, iconFamily: "Cisco", icon: "Printer", text: "Impresora Lab 4"}
+
+  E3SW1/8: {x: 23.5, y: 9, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 1/8 Lab 4"}
+  E3PCL4P2: {x: 23.5, y: 11, iconFamily: "Cisco", icon: "PC", text: "Equipos 16 a 30"}
+
+  E3SW1/9: {x: 25, y: 9, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 1/9 Lab 5"}
+  E3PCL5P1: {x: 24.5, y: 11, iconFamily: "Cisco", icon: "PC", text: "Equipos 1 a 15"}
+  E3IMPL5: {x: 25.5, y: 11, iconFamily: "Cisco", icon: "Printer", text: "Impresora Lab 5"}
+
+  E3SW1/10: {x: 26.5, y: 9, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 1/10 Lab 5"}
+  E3PCL5P2: {x: 26.5, y: 11, iconFamily: "Cisco", icon: "PC", text: "Equipos 16 a 30"}
+
+  E3SW2/1: {x: 13, y: 15, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 2/1 Lab 6"}
+  E3PCL6P1: {x: 12.5, y: 17, iconFamily: "Cisco", icon: "PC", text: "Equipos 1 a 15"}
+  E3IMPL6: {x: 13.5, y: 17, iconFamily: "Cisco", icon: "Printer", text: "Impresora Lab 6"}
+  
+  E3SW2/2: {x: 14.5, y: 15, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 2/2 Lab 6"}
+  E3PCL6P2: {x: 14.5, y: 17, iconFamily: "Cisco", icon: "PC", text: "Equipos 16 a 30"}
+
+  E3SW2/3: {x: 16, y: 15, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 2/3 Lab 7"}
+  E3PCL7P1: {x: 15.5, y: 17, iconFamily: "Cisco", icon: "PC", text: "Equipos 1 a 15"}
+  E3IMPL7: {x: 16.5, y: 17, iconFamily: "Cisco", icon: "Printer", text: "Impresora Lab 7"}
+
+  E3SW2/4: {x: 17.5, y: 15, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 2/4 Lab 7"}
+  E3PCL7P2: {x: 17.5, y: 17, iconFamily: "Cisco", icon: "PC", text: "Equipos 16 a 30"}
+
+  E3SW2/5: {x: 19, y: 15, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 2/5 Lab 8"}
+  E3PCL8P1: {x: 18.5, y: 17, iconFamily: "Cisco", icon: "PC", text: "Equipos 1 a 15"}
+  E3IMPL8: {x: 19.5, y: 17, iconFamily: "Cisco", icon: "Printer", text: "Impresora Lab 8"}
+
+  E3SW2/6: {x: 20.5, y: 15, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 2/6 Lab 8"}
+  E3PCL8P2: {x: 20.5, y: 17, iconFamily: "Cisco", icon: "PC", text: "Equipos 16 a 30"}
+
+  E3SW2/7: {x: 22, y: 15, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 2/7 Lab 9"}
+  E3PCL9P1: {x: 21.5, y: 17, iconFamily: "Cisco", icon: "PC", text: "Equipos 1 a 15"}
+  E3IMPL9: {x: 22.5, y: 17, iconFamily: "Cisco", icon: "Printer", text: "Impresora Lab 9"}
+
+  E3SW2/8: {x: 23.5, y: 15, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 2/8 Lab 9"}
+  E3PCL9P2: {x: 23.5, y: 17, iconFamily: "Cisco", icon: "PC", text: "Equipos 16 a 30"}
+
+  E3SW2/9: {x: 25, y: 15, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 2/9 Lab 10"}
+  E3PCL10P1: {x: 24.5, y: 17, iconFamily: "Cisco", icon: "PC", text: "Equipos 1 a 15"}
+  E3IMPL10: {x: 25.5, y: 17, iconFamily: "Cisco", icon: "Printer", text: "Impresora Lab 10"}
+
+  E3SW2/10: {x: 26.5, y: 15, iconFamily: "Cisco", icon: "Workgroup_switch", text: "Switch 2/10 Lab 10"}
+  E3PCL10P2: {x: 26.5, y: 17, iconFamily: "Cisco", icon: "PC", text: "Equipos 16 a 30"}
+
+  E3AP: {x: 11, y:  15, iconFamily: "Cisco", icon: "AccessPoint"}
+  
+
+connections:
+
+  ### LINKS DEL EDIFICIO 2
+  # Router a switches
+  link1: 
+    endpoints: ["R2", "E2SW1"]
+    curve: "stepafter"
+  link2:
+    endpoints: ["R2", "E2SW2"]
+    curve: "stepafter"
+
+  # Switch 1 a Computadoras
+  link3:
+    endpoints: ["E2SW1", "E2Aula1"]
+    curve: "stepafter"
+  link4:
+    endpoints: ["E2SW1", "E2Aula2"]
+    curve: "stepafter"
+  link5:
+    endpoints: ["E2SW1", "E2Aula3"]
+    curve: "stepafter"
+  link6:
+    endpoints: ["E2SW1", "E2Aula4"]
+    curve: "stepafter"
+  link7:
+    endpoints: ["E2SW1", "E2Aula5"]
+    curve: "stepafter"
+  link8:
+    endpoints: ["E2SW1", "E2Aula6"]
+    curve: "stepreversed"
+  link9:
+    endpoints: ["E2SW1", "E2Aula7"]
+    curve: "stepreversed"
+  link10:
+    endpoints: ["E2SW1", "E2Aula8"]
+    curve: "stepreversed"
+  link11:
+    endpoints: ["E2SW1", "E2Aula9"]
+    curve: "stepreversed"
+  link12:
+    endpoints: ["E2SW1", "E2Aula10"]
+    curve: "stepreversed"
+    
+  # Switch 2 a Computadoras
+  link13:
+    endpoints: ["E2SW2", "E2Aula11"]
+    curve: "stepafter"
+  link14:
+    endpoints: ["E2SW2", "E2Aula12"]
+    curve: "stepafter"
+  link15:
+    endpoints: ["E2SW2", "E2Aula13"]
+    curve: "stepafter"
+  link16:
+    endpoints: ["E2SW2", "E2Aula14"]
+    curve: "stepafter"
+  link17:
+    endpoints: ["E2SW2", "E2Aula15"]
+    curve: "stepafter"
+  link18:
+    endpoints: ["E2SW2", "E2Aula16"]
+    curve: "stepreversed"
+  link19:
+    endpoints: ["E2SW2", "E2Aula17"]
+    curve: "stepreversed"
+  link20:
+    endpoints: ["E2SW2", "E2Aula18"]
+    curve: "stepreversed"
+  link21:
+    endpoints: ["E2SW2", "E2Aula19"]
+    curve: "stepreversed"
+  link22:
+    endpoints: ["E2SW2", "E2Aula20"]
+    curve: "stepreversed"
+  link23:
+    endpoints: ["R2", "E2AP"]
+    curve: "stepreversed"
+
+  ### LINKS DEL EDIFICIO 1
+  # Router a switches e intraswitches
+  link24:
+    endpoints: ["R1", "E1SWBase"]
+    curve: "stepreversed"
+  link25:
+    endpoints: ["E1SWBase", "E1SW1"]
+    curve: "step"
+  link26:
+    endpoints: ["E1SWBase", "E1SW2"]
+    curve: "step"
+  link27:
+    endpoints: ["E1SWBase", "E1SW3"]
+    curve: "step"
+  link28:
+    endpoints: ["E1SWBase", "E1SW4"]
+    curve: "step"
+  link29:
+    endpoints: ["E1SWBase", "E1SW5"]
+    curve: "step"
+
+  # Switches a hosts
+  link30:
+    endpoints: ["E1SW1", "O1COMP1"]
+    curve: "stepafter"
+  link31:
+    endpoints: ["E1SW1", "O1COMP2"]
+    curve: "stepafter"
+  link32:
+    endpoints: ["E1SW1", "O1COMP3"]
+    curve: "stepafter"
+  link33:
+    endpoints: ["E1SW1", "O1COMP4"]
+    curve: "stepafter"
+  link34:
+    endpoints: ["E1SW1", "O1COMP5"]
+    curve: "stepafter"
+  link35:
+    endpoints: ["E1SW1", "O1IMP"]
+    curve: "stepafter"
+  link36:
+    endpoints: ["E1SW1", "O2COMP1"]
+    curve: "stepafter"
+  link37:
+    endpoints: ["E1SW1", "O2COMP2"]
+    curve: "stepafter"
+  link38:
+    endpoints: ["E1SW1", "O2COMP3"]
+    curve: "stepafter"
+  link39:
+    endpoints: ["E1SW1", "O2COMP4"]
+    curve: "stepafter"
+  link40:
+    endpoints: ["E1SW1", "O2COMP5"]
+    curve: "stepafter"
+  link41:
+    endpoints: ["E1SW1", "O2IMP"]
+    curve: "stepafter"
+  link42:
+    endpoints: ["E1SW2", "O3COMP1"]
+    curve: "stepafter"
+  link43:
+    endpoints: ["E1SW2", "O3COMP2"]
+    curve: "stepafter"
+  link44:
+    endpoints: ["E1SW2", "O3COMP3"]
+    curve: "stepafter"
+  link45:
+    endpoints: ["E1SW2", "O3COMP4"]
+    curve: "stepafter"
+  link46:
+    endpoints: ["E1SW2", "O3COMP5"]
+    curve: "stepafter"
+  link47:
+    endpoints: ["E1SW2", "O3IMP"]
+    curve: "stepafter"
+  link48:
+    endpoints: ["E1SW2", "O4COMP1"]
+    curve: "stepafter"
+  link49:
+    endpoints: ["E1SW2", "O4COMP2"]
+    curve: "stepafter"
+  link50:
+    endpoints: ["E1SW2", "O4COMP3"]
+    curve: "stepafter"
+  link51:
+    endpoints: ["E1SW2", "O4COMP4"]
+    curve: "stepafter"
+  link52:
+    endpoints: ["E1SW2", "O4COMP5"]
+    curve: "stepafter"
+  link53:
+    endpoints: ["E1SW2", "O4IMP"]
+    curve: "stepafter"
+  link54:
+    endpoints: ["E1SW3", "O5COMP1"]
+    curve: "stepafter"
+  link55:
+    endpoints: ["E1SW3", "O5COMP2"]
+    curve: "stepafter"
+  link56:
+    endpoints: ["E1SW3", "O5COMP3"]
+    curve: "stepafter"
+  link57:
+    endpoints: ["E1SW3", "O5COMP4"]
+    curve: "stepafter"
+  link58:
+    endpoints: ["E1SW3", "O5COMP5"]
+    curve: "stepafter"
+  link59:
+    endpoints: ["E1SW3", "O5IMP"]
+    curve: "stepafter"
+  link60:
+    endpoints: ["E1SW3", "O6COMP1"]
+    curve: "stepafter"
+  link61:
+    endpoints: ["E1SW3", "O6COMP2"]
+    curve: "stepafter"
+  link62:
+    endpoints: ["E1SW3", "O6COMP3"]
+    curve: "stepafter"
+  link63:
+    endpoints: ["E1SW3", "O6COMP4"]
+    curve: "stepafter"
+  link64:
+    endpoints: ["E1SW3", "O6COMP5"]
+    curve: "stepafter"
+  link65:
+    endpoints: ["E1SW3", "O6IMP"]
+    curve: "stepafter"
+  link66:
+    endpoints: ["E1SW4", "O7COMP1"]
+    curve: "stepafter"
+  link67:
+    endpoints: ["E1SW4", "O7COMP2"]
+    curve: "stepafter"
+  link68:
+    endpoints: ["E1SW4", "O7COMP3"]
+    curve: "stepafter"
+  link69:
+    endpoints: ["E1SW4", "O7COMP4"]
+    curve: "stepafter"
+  link70:
+    endpoints: ["E1SW4", "O7COMP5"]
+    curve: "stepafter"
+  link71:
+    endpoints: ["E1SW4", "O7IMP"]
+    curve: "stepafter"
+  link72:
+    endpoints: ["E1SW4", "O8COMP1"]
+    curve: "stepafter"
+  link73:
+    endpoints: ["E1SW4", "O8COMP2"]
+    curve: "stepafter"
+  link74:
+    endpoints: ["E1SW4", "O8COMP3"]
+    curve: "stepafter"
+  link75:
+    endpoints: ["E1SW4", "O8COMP4"]
+    curve: "stepafter"
+  link76:
+    endpoints: ["E1SW4", "O8COMP5"]
+    curve: "stepafter"
+  link77:
+    endpoints: ["E1SW4", "O8IMP"]
+    curve: "stepafter"
+  link78:
+    endpoints: ["E1SW5", "O9COMP1"]
+    curve: "stepafter"
+  link79:
+    endpoints: ["E1SW5", "O9COMP2"]
+    curve: "stepafter"
+  linK80:
+    endpoints: ["E1SW5", "O9COMP3"]
+    curve: "stepafter"
+  link81:
+    endpoints: ["E1SW5", "O9COMP4"]
+    curve: "stepafter"
+  link82:
+    endpoints: ["E1SW5", "O9COMP5"]
+    curve: "stepafter"
+  link83:
+    endpoints: ["E1SW5", "O9IMP"]
+    curve: "stepafter"
+  link84:
+    endpoints: ["E1SW5", "O10COMP1"]
+    curve: "stepafter"
+  link85:
+    endpoints: ["E1SW5", "O10COMP2"]
+    curve: "stepafter"
+  link86:
+    endpoints: ["E1SW5", "O10COMP3"]
+    curve: "stepafter"
+  link87:
+    endpoints: ["E1SW5", "O10COMP4"]
+    curve: "stepafter"
+  link88:
+    endpoints: ["E1SW5", "O10COMP5"]
+    curve: "stepafter"
+  link89:
+    endpoints: ["E1SW5", "O10IMP"]
+    curve: "stepafter"
+  link90:
+    endpoints: ["R1", "E1AP"]
+    curve: "step"
+  link91:
+    endpoints: ["R3", "E3SW1"]
+    curve: "step"
+  link92:
+    endpoints: ["E3SW1", "E3SW1/1"]
+    curve: "stepafter"
+  link93:
+    endpoints: ["E3SW1", "E3SW1/2"]
+    curve: "stepafter"
+  link94:
+    endpoints: ["E3SW1", "E3SW1/3"]
+    curve: "stepafter"
+  link95:
+    endpoints: ["E3SW1", "E3SW1/4"]
+    curve: "stepafter"
+  link96:
+    endpoints: ["E3SW1", "E3SW1/5"]
+    curve: "stepafter"
+  link97:
+    endpoints: ["E3SW1", "E3SW1/6"]
+    curve: "stepafter"
+  link98:
+    endpoints: ["E3SW1", "E3SW1/7"]
+    curve: "stepafter"
+  link99:
+    endpoints: ["E3SW1", "E3SW1/8"]
+    curve: "stepafter"
+  link100:
+    endpoints: ["E3SW1", "E3SW1/9"]
+    curve: "stepafter"
+  link101:
+    endpoints: ["E3SW1", "E3SW1/10"]
+    curve: "stepafter"
+  link102:
+    endpoints: ["E3SW1/1", "E3PCL1P1"]
+    curve: "linear"
+  link103:
+    endpoints: ["E3SW1/1", "E3IMPL1"]
+    curve: "linear"
+  link104:
+    endpoints: ["E3SW1/2", "E3PCL1P2"]
+    curve: "linear"
+  link105:
+    endpoints: ["E3SW1/3", "E3PCL2P1"]
+    curve: "linear"
+  link106:
+    endpoints: ["E3SW1/3", "E3IMPL2"]
+    curve: "linear"
+  link107:
+    endpoints: ["E3SW1/4", "E3PCL2P2"]
+    curve: "linear"
+  link108:
+    endpoints: ["E3SW1/5", "E3PCL3P1"]
+    curve: "linear"
+  link109:
+    endpoints: ["E3SW1/5", "E3IMPL3"]
+    curve: "linear"
+  link110:
+    endpoints: ["E3SW1/6", "E3PCL3P2"]
+    curve: "linear"
+  link111:
+    endpoints: ["E3SW1/7", "E3PCL4P1"]
+    curve: "linear"
+  link112:
+    endpoints: ["E3SW1/7", "E3IMPL4"]
+    curve: "linear"
+  link113:
+    endpoints: ["E3SW1/8", "E3PCL4P2"]
+    curve: "linear"
+  link114:
+    endpoints: ["E3SW1/9", "E3PCL5P1"]
+    curve: "linear"
+  link115:
+    endpoints: ["E3SW1/9", "E3IMPL5"]
+    curve: "linear"
+  link116:
+    endpoints: ["E3SW1/10", "E3PCL5P2"]
+    curve: "linear"
+  link117:
+    endpoints: ["E3SW2", "E3SW2/1"]
+    curve: "stepafter"
+  link118:
+    endpoints: ["E3SW2", "E3SW2/2"]
+    curve: "stepafter"
+  link119:
+    endpoints: ["E3SW2", "E3SW2/3"]
+    curve: "stepafter"
+  link120:
+    endpoints: ["E3SW2", "E3SW2/4"]
+    curve: "stepafter"
+  link121:
+    endpoints: ["E3SW2", "E3SW2/5"]
+    curve: "stepafter"
+  link122:
+    endpoints: ["E3SW2", "E3SW2/6"]
+    curve: "stepafter"
+  link123:
+    endpoints: ["E3SW2", "E3SW2/7"]
+    curve: "stepafter"
+  link124:
+    endpoints: ["E3SW2", "E3SW2/8"]
+    curve: "stepafter"
+  link125:
+    endpoints: ["E3SW2", "E3SW2/9"]
+    curve: "stepafter"
+  link126:
+    endpoints: ["E3SW2", "E3SW2/10"]
+    curve: "stepafter"
+  link141:
+    endpoints: ["E3SW2/1", "E3PCL6P1"]
+    curve: "linear"
+  link127:
+    endpoints: ["E3SW2/1", "E3IMPL6"]
+    curve: "linear"
+  link128:
+    endpoints: ["E3SW2/2", "E3PCL6P2"]
+    curve: "linear"
+  link129:
+    endpoints: ["E3SW2/3", "E3PCL7P1"]
+    curve: "linear"
+  link130:
+    endpoints: ["E3SW2/3", "E3IMPL7"]
+    curve: "linear"
+  link131:
+    endpoints: ["E3SW2/4", "E3PCL7P2"]
+    curve: "linear"
+  link132:
+    endpoints: ["E3SW2/5", "E3PCL8P1"]
+    curve: "linear"
+  link133:
+    endpoints: ["E3SW2/5", "E3IMPL8"]
+    curve: "linear"
+  link134:
+    endpoints: ["E3SW2/6", "E3PCL8P2"]
+    curve: "linear"
+  link135:
+    endpoints: ["E3SW2/7", "E3PCL9P1"]
+    curve: "linear"
+  link136:
+    endpoints: ["E3SW2/7", "E3IMPL9"]
+    curve: "linear"
+  link137:
+    endpoints: ["E3SW2/8", "E3PCL9P2"]
+    curve: "linear"
+  link138:
+    endpoints: ["E3SW2/9", "E3PCL10P1"]
+    curve: "linear"
+  link139:
+    endpoints: ["E3SW2/9", "E3IMPL10"]
+    curve: "linear"
+  link140:
+    endpoints: ["E3SW2/10", "E3PCL10P2"]
+    curve: "linear"
+  #### El link 141 ya esta mas arriba, saltar al 142
+  link142:
+    endpoints: ["R3", "E3SW2"]
+    curve: "stepbefore"
+  link143:
+    endpoints: ["R3", "E3AP"]
+    curve: "stepbefore"
+
+
+
+  ## CONEXIONES ENTRE ROUTERS
+
+  link144:
+    endpoints: ["R1", "R2"]
+    curve: "curved"
+  
+  link145:
+    endpoints: ["R2", "R3"]
+    curve: "curved"
+  
+  link146:
+    endpoints: ["R3", "R1"]
+    curve: "curved"
+    curveOffset: -1.5
+
+
+
+
+groups:
+  edificio1: 
+    members: ["R1", "E1SWBase", "E1SW1", "E1SW2", "E1SW3", "E1SW4", "E1SW5", "O1COMP1", "O1COMP2", "O1COMP3", "O1COMP4", "O1COMP5", "O2COMP1", "O2COMP2", "O2COMP3", "O2COMP4", "O2COMP5", "O3COMP1", "O3COMP2", "O3COMP3", "O3COMP4", "O3COMP5", "O4COMP1", "O4COMP2", "O4COMP3", "O4COMP4", "O4COMP5", "O5COMP1", "O5COMP2", "O5COMP3", "O5COMP4", "O5COMP5", "O6COMP1", "O6COMP2", "O6COMP3", "O6COMP4", "O6COMP5", "O7COMP1", "O7COMP2", "O7COMP3", "O7COMP4", "O7COMP5", "O8COMP1", "O8COMP2", "O8COMP3", "O8COMP4", "O8COMP5", "O9COMP1", "O9COMP2", "O9COMP3", "O9COMP4", "O9COMP5", "O10COMP1", "O10COMP2", "O10COMP3", "O10COMP4", "O10COMP5", "O1IMP", "02IMP", "03IMP", "04IMP", "05IMP", "06IMP", "07IMP", "08IMP", "09IMP", "010IMP"]
+    text: "Edificio 1"
+  edificio2:
+    members: ["R2", "E2SW1", "E2SW2", "E2Aula1", "E2Aula2", "E2Aula3", "E2Aula4", "E2Aula5", "E2Aula6", "E2Aula7", "E2Aula8", "E2Aula9", "E2Aula10", "E2Aula11", "E2Aula12", "E2Aula13", "E2Aula14", "E2Aula15", "E2Aula16", "E2Aula17", "E2Aula18", "E2Aula19", "E2Aula20", "E2AP"]
+    text: "Edificio 2"
+  edificio3:
+    members: ["R3", "E3SW1/1", "E3SW1/2", "E3SW1/3", "E3SW1/4", "E3SW1/5", "E3SW1/6", "E3SW1/7", "E3SW1/8", "E3SW1/9", "E3SW1/10", "E3SW1", "E3PCL1P1", "E3PCL1P2", "E3PCL2P1", "E3PCL2P2", "E3PCL3P1", "E3PCL3P2", "E3PCL4P1", "E3PCL4P2", "E3PCL5P1", "E3PCL5P2", "E3IMPL1", "E3IMPL2", "E3IMPL3", "E3IMPL4", "E3IMPL5", "E3SW2/1", "E3SW2/2", "E3SW2/3", "E3SW2/4", "E3SW2/5", "E3SW2/6", "E3SW2/7", "E3SW2/8", "E3SW2/9", "E3SW2/10", "E3SW2", "E3PCL6P1", "E3PCL6P2", "E3PCL7P1", "E3PCL7P2", "E3PCL8P1", "E3PCL8P2", "E3PCL9P1", "E3PCL9P2", "E3PCL10P1", "E3PCL10P2", "E3IMPL6", "E3IMPL7", "E3IMPL8", "E3IMPL9", "E3IMPL10"]
+    text: "Edificio 3"
