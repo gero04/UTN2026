@@ -46,7 +46,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de archivos"
             }
           },
           {
@@ -80,7 +80,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "18bf7723392a6339",
@@ -173,20 +174,21 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
     }
   },
   "active": "b2ed500ecd173d5d",
   "lastOpenFiles": [
+    "Pasted image 20260412172334.png",
+    "ICS - Ingenieria y Calidad de Software/Notas de Clases/Teorico.md",
     "ICS - Ingenieria y Calidad de Software/Presentaciones de clases/00 2026 Ingenieria y Calidad de Software 2C.pdf",
     "ICS - Ingenieria y Calidad de Software/Presentaciones de clases/TDD Lineamientos con Taxi Mobile .pdf",
-    "ICS - Ingenieria y Calidad de Software/Notas de Clases/Teorico.md",
     "IOP - Investigación Operativa/Unidad 3 - Programacion Lineal/Programación Lineal y Simplex.md",
     "SIM - Simulacion/Unidad 5 - Modelos de Simulacion Dinamicos/Ejercicios basicos/lu115323867v.tmp",
     "RED - Redes de Datos/Unidad 3 - Capa de Interred y direccionamiento/Subredes.md",
@@ -198,7 +200,6 @@
     "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/1.3 - Industrias Vandelay.md",
     "IOP - Investigación Operativa/Unidad 1 - Metodologia de la investigacion/Guia de estudio - Unidad 1.md",
     "IOP - Investigación Operativa/Resumenes/BasePractico.md",
-    "Pasted image 20260412172334.png",
     "Pasted image 20260410101959.png",
     "Pasted image 20260410101341.png",
     "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/Plantilla.md",
@@ -214,7 +215,6 @@
     "IOP - Investigación Operativa/Unidad 1 - Metodologia de la investigacion/PRESENTACIÓN DE LA MATERIA - PPT.pdf",
     "SIM - Simulacion/Unidad 3/05 - Generación de variables aleatorias.pdf",
     "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal",
-    "IOP - Investigación Operativa/Unidad 1 - Metodologia de la investigacion",
     "SIM - Simulacion/Unidad 3/Transformada Inversa.md",
     "SIM - Simulacion/Unidad 2/Numeros pseudoaleatorios y pruebas de bondad de ajuste.md",
     "SIM - Simulacion/Unidad 1/Introduccion a la materia y conceptos teoricos.md",
