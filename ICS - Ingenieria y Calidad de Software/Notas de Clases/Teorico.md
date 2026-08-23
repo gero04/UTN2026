@@ -1,71 +1,29 @@
 ## Viernes 21 de Agosto: Introducción a la Agilidad y Requerimientos Ágiles (User Stories) 
-
 **Resumen en una oración:** La clase abordó la fundamentación conceptual de la filosofía ágil frente a los procesos definidos tradicionales, la estructura de la gestión de proyectos (personas, procesos, producto y proyecto), los tres pilares del empirismo y la técnica de Historias de Usuario (User Stories) para la especificación Just-In-Time de requerimientos.
 
 ---
-
 ### Conceptos clave
-
 * **Filosofía Ágil (Agilismo):** Enfoque filosófico y marco mental basado en un conjunto de valores y principios centrados principalmente en las personas y el cambio cultural. No es una metodología ni un proceso de software.
-
-
 * **Procesos Empíricos:** Procesos basados en la experiencia directa y en el aprendizaje adaptativo dentro del contexto de cada proyecto. Sostienen que la experiencia es única e intransferible (no se puede extrapolar a otros proyectos).
-
-
 * **Procesos Definidos:** Procesos estructurados (como el PUD o RUP) que buscan la repetibilidad mediante una planificación detallada y la estandarización previa de actividades, asumiendo que la experiencia acumulada se puede extrapolar.
-
-
 * **Los 3 Pilares del Empirismo:** **Inspección** (puntos de realimentación temprana y frecuente), **Adaptación** (capacidad de modificar producto, proceso o conducta a partir del feedback) y **Transparencia** (visibilidad y honestidad total sobre el estado real del proyecto).
-
-
 * **Product Backlog:** Lista dinámicamente priorizada de características y necesidades de negocio que representa el contenedor de requerimientos del producto. Es gestionado exclusivamente por el Product Owner.
-
-
 * **User Story (Historia de Usuario):** Técnica de especificación de requerimientos en ambientes ágiles que describe una necesidad desde la perspectiva del usuario final.
-
-
 * **Modelo INVEST:** Criterio de calidad para evaluar la redacción de una Historia de Usuario (*Independent, Negotiable, Valuable, Estimatable, Small, Testable*).
-
-
 * **Spike:** Historia de usuario con un nivel de incertidumbre tan elevado (por falta de definición funcional o técnica) que no permite su estimación ni su implementación directa, requiriendo investigación previa.
-
-
-
 ---
-
 ### Desarrollo de la clase
-
 #### 1. Encuadre de la materia y disciplinas de la Ingeniería de Software
-
 El docente comenzó repasando el mapa general de la asignatura y sus diferentes unidades. Dentro de la Ingeniería de Software conviven tres grandes grupos de disciplinas:
-
 1. **Disciplinas Técnicas:** Incluyen requerimientos, análisis, diseño, pruebas (*testing*) y despliegue. Las dos últimas son el foco técnico de la materia.
-
-
 2. **Disciplinas de Gestión:** Se concentran en la planificación, seguimiento y control del proyecto (Unidad 2).
-
-
 3. **Disciplinas de Soporte o Protectoras:** Abarcan la Gestión de Configuración de Software (SCM), prácticas continuas (*Continuous Integration, Delivery, Deployment*), aseguramiento de calidad (SQA) y métricas (Unidades 3 y 4).
-
-
-
 #### 2. Las dimensiones del desarrollo: El esquema de las 4 P
-
 Apoyándose en el esquema conceptual del Proceso Unificado (PUD), se explicaron las dimensiones que interactúan en la ingeniería de software:
-
 * **Personas:** El recurso más valioso y determinante. El software es una actividad "humano-intensiva". Sin un equipo capacitado y motivado, los mejores procesos o herramientas fracasan.
-
-
 * **Proceso:** La definición teórica y estructurada de tareas para construir software.
-
-
 * **Proyecto:** La unidad de gestión del trabajo con recursos y tiempo acotado. Instancia el proceso para generar el producto.
-
-
 * **Producto:** El software en sus distintas versiones e ítems de configuración.
-
-
-
 Un **Proyecto** posee cuatro características fundamentales:
 
 1. **Resultados únicos:** Genera un producto o versión única.

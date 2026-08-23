@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IOP - Investigación Operativa/Unidad 3 - Programacion Lineal/Programación Lineal y Simplex.md",
+                "file": "ICS - Ingenieria y Calidad de Software/Notas de Clases/Teorico.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Programación Lineal y Simplex"
+              "title": "Teorico"
             }
           }
         ]
@@ -41,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -182,11 +184,14 @@
   },
   "active": "b2ed500ecd173d5d",
   "lastOpenFiles": [
+    "ICS - Ingenieria y Calidad de Software/Presentaciones de clases/00 2026 Ingenieria y Calidad de Software 2C.pdf",
+    "ICS - Ingenieria y Calidad de Software/Presentaciones de clases/TDD Lineamientos con Taxi Mobile .pdf",
+    "ICS - Ingenieria y Calidad de Software/Notas de Clases/Teorico.md",
+    "IOP - Investigación Operativa/Unidad 3 - Programacion Lineal/Programación Lineal y Simplex.md",
     "SIM - Simulacion/Unidad 5 - Modelos de Simulacion Dinamicos/Ejercicios basicos/lu115323867v.tmp",
     "RED - Redes de Datos/Unidad 3 - Capa de Interred y direccionamiento/Subredes.md",
     "RED - Redes de Datos/Unidad 3 - Capa de Interred y direccionamiento/Direccionamiento IP.md",
     "RED - Redes de Datos/Unidad 3 - Capa de Interred y direccionamiento",
-    "IOP - Investigación Operativa/Unidad 3 - Programacion Lineal/Programación Lineal y Simplex.md",
     "IOP - Investigación Operativa/Unidad 3 - Programacion Lineal",
     "IOP - Investigación Operativa/Bibliografia/GUIA DE CASOS Y PROBLEMAS - 2026 -.pdf",
     "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal/Problemas de la Guia - Capitulo 1/1.1 - Chemical Sun S.A..md",
@@ -210,9 +215,7 @@
     "SIM - Simulacion/Unidad 3/05 - Generación de variables aleatorias.pdf",
     "IOP - Investigación Operativa/Unidad 2 - Introduccion a la programacion lineal",
     "IOP - Investigación Operativa/Unidad 1 - Metodologia de la investigacion",
-    "SIM - Simulacion/Unidad 3/04 - Método de la transformada inversa.pdf",
     "SIM - Simulacion/Unidad 3/Transformada Inversa.md",
-    "SIM - Simulacion/Unidad 3/Guia de ejercicios SIM Unidad 3.pdf",
     "SIM - Simulacion/Unidad 2/Numeros pseudoaleatorios y pruebas de bondad de ajuste.md",
     "SIM - Simulacion/Unidad 1/Introduccion a la materia y conceptos teoricos.md",
     "RED - Redes de Datos/Semana1/RED25032026.md",
