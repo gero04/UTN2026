@@ -1,0 +1,32 @@
+decir metodologias agiles esta mal, lo agil es una filosofia
+
+vemos dos filosofias principales, agil y lean
+estas dos filosofias estan conformadas por procesos empiricos
+
+el framework que estudiamos principalmente es el SCRUM y esta relacionado con la filosofia agil
+el framework que vemos relacionado con la filosofia lean se llama kanban
+
+scrumban es una mezcla de kanban y scrum 
+
+los manifiestos -> filosofias definen el que, mientras que los frameworks el como
+
+scrum no es un proceso completo que explica como hacer un producto de software, mas bien explica como se arma el proyecto que es mas global que el proceso
+
+los proyectos tienen como resultado una version de producto unica
+
+el empirismo tiene 3 pilares: inspeccion (necesito ganar experiencia rapido), adaptacion (es una consecuencia de la inspeccion), transparencia (es una actitud de las personas que es necesaria para que los otros dos pilares funcionen)
+
+no se puede mezclar por ejemplo scrum con cascada porque scrum es un framework de la filosofia agil, y la filosofia agil esta conformada por procesos agiles, y cascada no es agil porque no sigue uno de los pilares del empirismo que es la inspeccion porque el feedback te lo dan al final del proyecto y es mucho tiempo
+
+EN NINGUN FRAMEWORK NO SE HACE DOCUMENTACION, TODOS TIENEN DOCUMENTACION
+
+USER STORY:AS WHO I WANT WHAT SO THAT WHY
+como NOMBRE DE ROL yo puedo ACTIVIDAD de forma tal que VALOR DE NEGOCIO QUE RECIBO
+por ejemplo COMO CONDUCTOR QUIERO BUSCAR UN DESTINO A PARTIR DE UNA CALLE Y ALTURA PARA PODER LLEGAR AL LUGAR DESEADO SIN PERDERME
+lo incorrecto seria poner "buscar destino por direccion" esto es una frase verbal, esto lo usamos unicamente para referir la user story cuando estamos trabajando en ella
+
+user story completa es frase verbal + descripcion completa (AS WHO I WANT WHAT SO THAT WHY) + criterios de aceptacion + pruebas de usuario que pasan y que fallan
+
+modelo de calidad INVEST que dice si la user story es buena o no Independent Negotiable Valuable Estimatable Small Testable 
+
+
