@@ -37,4 +37,39 @@ En esta arquitectura se reconocen los siguientes componentes:
 2. Medio inalámbrico (radio frecuencias).
 3. Celda: Área geográfica en la cual una serie de dispositivos se interconectan entre sí por un medio inalámbrico.
 4. Access Point: Une las redes y dispositivos funcionando como un **bridge** o puente.
-5. Sistema de distribución
+5. Sistema de distribución (DS): Proporciona movilidad entre celdas.
+6. BSS: Servicios basicos de comunicaciones.
+7. ESS: Union de varios BSS.
+### Servicios del Sistema de Distribucion
+#### 1. Asociacion
+- Una estacion debe estar asociada a un AP a traves de un SSID
+- El SSID (Service Set Identifier) es el nombre que identifica la red y debe estar formado por 32 caracteres como maximo. Todos los dispositivos dentro de un BSS deben compartir el mismo SSID
+- Una estacion solo puede estar asociada a un AP a la vez
+- El DS debe conocer en que AP se encuentra la estacion
+- Las estaciones anuncian al AP su identidad y capacidad usando balizas
+- Se utilizan tramas para descubrir el AP y asociarse
+#### 2. Disociacion
+- Utilizado por las estaciones antes de apagarse o salir de la red
+- La estacion base puede usarla antes de su mantenimiento
+- Cualquier de las partes (AP o estacion) pueden terminar la asociacion
+#### 3. Reasociacion
+- Permite que una estacion deje la asociacion de un AP para pasar a asociarse a otro AP
+#### 4. Distribucion
+- Servicio por el cual se trasladan los datos desde el origen al destino
+- Los datos enviados al AP local fluyen por el DS hasta el AP remoto, llegando asi a la estacion destino
+#### Servicios Extra
+- El cliente se debe asociar con un AP o router inalambrico
+- Se utilizan tramas de administracion para completar los procesos de:
+	- Descubrir nuevos AP inalambricos
+	- Autenticar con el AP
+	- Asociarse al AP
+- Para permitir la negociacion de estos proceso se deben configurar los parametros en el AP y luego el cliente
+### Asociacion de un cliente inalambrico
+Para asociarse, un cliente inalambrico y un AP deben acordar parametros especificos:
+- SSID: El cliente debe conocer el nombre de la red a la cual se va a asociar
+- Contraseña: Para que el cliente se autentique en el AP
+- Modo de red: Estandar 802.11 que se este utilizando
+- Modo de seguridad: Parametros de seguridad (WEP, WPA, WPA2, WPA3)
+- Configuracion de canales: Las bandas de frecuencia en uso
+### Confiabilidad en IEEE 802.11
+Las redes inalambricas son ruidosas e inseguras, debido a que tienen interferencias con otros dispositivos. Al alejarnos de las celdas empezara a suceder que nuestra señal se deteriora y sufre mas interferencias. Como estrategia, es bueno bajar la tasa de transmision si se pierden demasiadas tramas y cuando veamos que se empiezan a entregar tramas exitosamente, la estacion puede aumentar la tasa de transmision. Entre mas corta sea la trama, mayor va a ser la rpobabilidad de que la trama llegue correctamente a destino. Ademas, dividir la trama en fragmentos numerados individualmente permite que
