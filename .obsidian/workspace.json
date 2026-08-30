@@ -46,7 +46,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de archivos"
             }
           },
           {
@@ -173,17 +173,19 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
     }
   },
   "active": "b2ed500ecd173d5d",
   "lastOpenFiles": [
+    "ICS - Ingenieria y Calidad de Software/Notas de Clases/Practico.md",
+    "ICS - Ingenieria y Calidad de Software/Notas de Clases/Teorico.md",
     "RED - Redes de Datos/Resumenes/Mi Resumen (2do parcial).md",
     "Pasted image 20260830125735.png",
     "Pasted image 20260829210822.png",
@@ -195,8 +197,6 @@
     "RED - Redes de Datos/Resumenes/img/PilaDeProtocolosIEE802.11.png",
     "Pasted image 20260412172334.png",
     "RED - Redes de Datos/Resumenes/img",
-    "ICS - Ingenieria y Calidad de Software/Notas de Clases/Practico.md",
-    "ICS - Ingenieria y Calidad de Software/Notas de Clases/Teorico.md",
     "RED - Redes de Datos/Resumenes/Resumen Segundo Parcial Redes.pdf",
     "ICS - Ingenieria y Calidad de Software/Presentaciones de clases/00 2026 Ingenieria y Calidad de Software 2C.pdf",
     "ICS - Ingenieria y Calidad de Software/Presentaciones de clases/TDD Lineamientos con Taxi Mobile .pdf",
