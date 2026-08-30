@@ -163,3 +163,189 @@ Para asegurar que una Historia de Usuario está bien construida debe evaluarse b
 * **Spikes:** Profundizar la lectura en la presentación (PPT) sobre los tipos de Spikes (técnicos vs. funcionales) y cómo se redactan formalmente en la práctica.
 * **Criterio de elección de procesos:** La respuesta a la pregunta *"¿Cuándo conviene usar Scrum/Ágil y cuándo un proceso definido tradicional?"* quedó pendiente para ser desarrollada con mayor profundidad a medida que se avance en la materia.
 * **Lectura obligatoria:** Revisar el paper de Fred Brooks (*"No Silver Bullet"*) citado en la PPT 1 y el libro *User Stories Applied* de Mike Cohn (disponible en el aula virtual).
+## Viernes 28 de Agosto: Estimaciones Ágiles y Gestión de Productos
+**Materia:** Ingeniería y Calidad de Software 
+**Resumen en una oración:** La clase abordó los fundamentos de las estimaciones en proyectos de software, profundizó en las técnicas ágiles basadas en Story Points y Planning Poker, y explicó la gestión de productos desde la validación rápida mediante el MVP hasta la fidelización con el Producto Mínimo Adorable (MLP).
+
+  
+### Conceptos clave
+
+- **Estimación:** Es la predicción acerca de algo que podría pasar en el futuro. Se caracteriza por el alto nivel de incertidumbre, especialmente al inicio del proyecto. Es la base o entrada para planear y definir compromisos de negocio, pero no es el plan en sí mismo.
+    
+      
+    
+- **Story Point:** Es una unidad de medida relativa que sirve para estimar en entornos ágiles. No está basada en el tiempo (como las horas absolutas), sino en el tamaño o peso de la historia de usuario, evaluando la complejidad, el esfuerzo y la incertidumbre. Esta medida solo tiene valor y significado para las personas del equipo que participan en el proyecto.
+    
+      
+    
+- **Wideband Delphi:** Es una técnica para estructurar el juicio de expertos mediante estimaciones grupales y por consenso. Se discute grupalmente lo que hay que estimar, cada experto hace su estimación de manera individual, y si no hay convergencia, se debaten las diferencias hasta llegar a un acuerdo iterando varias veces.
+    
+      
+    
+- **Poker Estimation (Planning Poker):** Es una variante o mejora del método Wideband Delphi adaptada para entornos ágiles. Los desarrolladores utilizan un mazo de cartas con valores de la serie de Fibonacci para estimar grupalmente por comparación relativa frente a una historia "canónica" o base.
+    
+      
+    
+- **MVP (Minimum Viable Product o Mínimo Producto Viable):** Es la porción atómica construida con el menor esfuerzo posible que se utiliza exclusivamente para validar en el mercado la hipótesis de valor de un producto. Debe ser percibido por el usuario final como un producto funcional, aunque internamente no esté completamente desarrollado.
+    
+      
+    
+- **Producto Mínimo Comercializable (MMP/PMC):** Evolución natural del MVP una vez que la hipótesis inicial ha sido validada. Se trata del primer release (lanzamiento) pequeño y robusto que aporta valor concreto, se puede comercializar y está destinado generalmente a los usuarios tempranos (early adopters).
+    
+      
+    
+- **Características Mínimas Viables (MVF):** Son piezas atómicas de funcionalidades nuevas que se agregan de forma incremental a un producto mínimo comercializable que ya tiene vida y está en mercado. Se usan para probar y validar el interés en esas funciones puntuales.
+    
+      
+    
+- **Producto Mínimo Adorable (MLP):** Nivel de evolución de un producto de software que, además de solucionar una necesidad de manera funcional, genera una conexión emocional y lealtad con el usuario temprano, logrando ser elegido frente a múltiples competidores en el mercado.
+    
+      
+    
+
+## Desarrollo de la clase
+
+### Introducción a las Estimaciones de Software
+
+La clase inició repasando que el pensamiento Agile y el empirismo nacieron para contraponerse a los problemas que presentaba la gestión tradicional regida por procesos definidos. A partir de este contexto, se explicó que la actividad de estimar es, básicamente, hacer predicciones sobre el futuro. La gran dificultad radica en la incertidumbre inicial, la cual decrece progresivamente conforme se ejecuta el proyecto. Debido a esta evolución de la incertidumbre, la actividad de estimar no se hace una única vez, sino a lo largo de toda la vida del proyecto.
+
+  
+
+El punto conceptual más importante planteado es la distinción entre estimar y planificar. Las estimaciones brindan factibilidad técnica y son insumos para el equipo, pero no constituyen compromisos ni el plan final. El plan es el acuerdo comercial que se toma a partir de esas estimaciones. Un equipo puede reestimar y obtener valores nuevos sin que esto implique necesariamente que el plan a nivel negocio deba alterarse. Los errores en estimación generalmente ocurren por no ajustar con valores reales, usar datos históricos incorrectos, o depender de un único método cuando, dada la incertidumbre, siempre conviene combinar varias técnicas. Para estimar la técnica base inicial es "contar" (por ejemplo: requerimientos, horas u hombres involucrados).
+
+  
+
+### Métodos Basados en la Experiencia
+
+Se hizo un repaso general de métodos tradicionales, focalizándose en aquellos basados en la experiencia empírica. El uso de datos históricos fue el primero mencionado, consistiendo en utilizar la información de proyectos previos. Las dificultades radican en que exige que la organización tenga una cultura y un sistema tipificado de almacenamiento para saber encontrar qué datos pasados son comparables y útiles para el proyecto actual.
+
+  
+
+El segundo enfoque fue el Juicio de Experto, sumamente extendido en la práctica. Depende de la visión de un especialista, lo que puede resultar erróneo por subjetividad, sesgos del experto sobre su propio conocimiento o porque el experto no será quien finalmente realice la tarea. Para reducir la subjetividad, se sugiere estructurar este juicio mediante fórmulas matemáticas (pesos divididos sobre valores optimistas, pesimistas y habituales) o dinámicas de consenso grupal iterativo como el Wideband Delphi. Estas estimaciones tradicionales siempre arrojan unidades de medida absolutas, como horas o días calendario, que tienen un valor universal para cualquiera.
+
+  
+
+### Estimaciones Ágiles: Puntos de Historia y Medidas Relativas
+
+Se contrastó el mundo tradicional con los ambientes ágiles, aclarando que medir software en unidades de tiempo absolutas es inestable. Una misma tarea demandará distintos tiempos según las habilidades técnicas, conocimientos del negocio y experiencia de cada desarrollador. Por esta razón, el agilismo utiliza una medida relativa llamada "Story Point" (Punto de Historia). Estas estimaciones se logran mediante comparación, algo que biológica y cognitivamente le resulta mucho más fácil realizar al ser humano.
+
+  
+
+El Story Point refleja el "peso" o tamaño de la tarea, integrando simultáneamente tres factores: la complejidad, la cantidad de esfuerzo y la incertidumbre o lo que se desconoce de la implementación. Para escalar estos valores se utilizan herramientas numéricas, siendo la más recomendada la Serie de Fibonacci (1, 2, 3, 5, 8...) en lugar de talles de ropa o escalas del 1 al 10. Esto ocurre porque la dificultad de construir software no crece linealmente; el incremento de complejidad es exponencial a medida que aumenta el tamaño del requerimiento.
+
+  
+
+### El Método Poker Estimation (Planning Poker)
+
+La estimación ágil implementa el Poker Estimation, que es directamente una mejora empírica de Wideband Delphi. La base inquebrantable de la técnica es que quienes realizan la estimación son pura y exclusivamente las personas que van a desarrollar la tarea, nunca expertos externos. La técnica usa las cartas físicas para fomentar la discusión.
+
+  
+
+El proceso es metódico: primero, el equipo debe llegar a un acuerdo para identificar una historia de usuario muy sencilla o "canónica" que funcionará como vara de medida inamovible, asignándole normalmente el valor 1 (o 2 en equipos más entrenados). Luego, toman del listado la historia a estimar, el Product Owner despeja dudas técnicas y funcionales, y cada estimador compara mentalmente el peso de esta nueva historia frente a la canónica. Si un desarrollador considera que la nueva tarea pesa el quíntuple que la canónica, seleccionará en secreto la carta con el 5 de Fibonacci. Tras revelar las cartas simultáneamente, se contrastan los casos extremos. Si alguien votó 2 y otro votó 8, deben argumentar qué factores de riesgo (o de simplificación) vieron para votar de esa forma. Luego de debatir, se vuelve a votar, repitiendo el proceso las veces necesarias hasta que las estimaciones individuales convergen en un único valor de grupo de forma consensuada.
+
+  
+
+### Gestión de Producto y Lean Startup
+
+La segunda sección abordó la construcción del producto, remarcando que "escribir código" dista mucho de "crear valor". Crear partes del software que los usuarios nunca van a usar es considerado desperdicio económico y pérdida de tiempo. Por ende, es necesario aplicar un diseño centrado no solo en completar tareas funcionales, sino en la experiencia real del usuario en el mercado.
+
+  
+
+El ciclo de validación sigue las premisas del Lean Startup. Todo comienza por un Mínimo Producto Viable (MVP), diseñado como una tajada rápida elaborada con el mínimo esfuerzo técnico indispensable. Su fin no es ganar dinero inmediato, sino validar de urgencia la hipótesis: ¿hay alguien dispuesto a usar lo que estoy planteando?. Si todo el mundo pide características discordantes, la idea inicial falló, pero como se construyó rápidamente y sin esfuerzo masivo, el impacto negativo es casi cero. Si la validación es positiva, la hipótesis de mercado existe y el equipo puede destinar presupuesto fuerte.
+
+  
+
+### Escalando el Producto: MMP, MVF y MLP
+
+Validado el terreno, el desarrollo cambia a un Producto Mínimo Comercializable (MMP o PMC). Ya no es un experimento provisorio, sino el primer lanzamiento formal (release) del producto. Es robusto y se orienta típicamente a cautivar a los "early adopters" aportando valor genuino transaccionable. Con un MMP andando en la calle, el equipo usa las Características Mínimas Viables (MVF) para validar a pequeña escala nuevas ideas o agregados puntuales sobre ese mismo ecosistema, iterando permanentemente.
+
+  
+
+El pináculo del desarrollo moderno es llegar al Producto Mínimo Adorable (MLP). Ante la abrumadora saturación de mercado, resolver la tarea ya no garantiza el éxito, puesto que la competencia puede ofrecer idéntica solución funcional. El MLP exige diseñar de manera tal que el software produzca un arraigo, un enganche y una conexión emocional sólida con el usuario desde su adopción temprana. Las animaciones, el branding y las respuestas emocionales logran retener a la base y generar fanatismo por la herramienta a lo largo del tiempo.
+
+  
+
+## Ejemplos y casos mencionados
+
+- **Empire State y otra torre elevada:** La profesora usó esta analogía gráfica para demostrar el fundamento de las medidas relativas. A simple vista, el ser humano no puede adivinar los metros absolutos de una torre, pero al compararla con una que conoce, sabe instantáneamente si es más alta o más baja y en qué proporción.
+    
+      
+    
+- **Talles de Remera (S, M, L, XL):** Se citó como ejemplo introductorio de cómo usar una escala comparativa fácil de entender para medir historias antes de aplicar Fibonacci.
+    
+      
+    
+- **Dropbox:** Se relató el caso de su creador, quien en lugar de desarrollar la compleja tecnología subyacente para compartir repositorios (que no existía), creó un MVP consistente en un simple video explicativo de tres minutos que parecía funcionar realmente. Al publicarlo, validó el furor del mercado (la hipótesis) antes de escribir código exhaustivo.
+    
+      
+    
+- **Reproducir música desde anteojos inteligentes:** Se mencionó hipotéticamente para ilustrar el riesgo de lanzar ideas audaces; si uno creyese tener esta idea revolucionaria, necesitaría un MVP urgente para asegurarse de que el cliente realmente vaya a aceptar la propuesta de valor.
+    
+      
+    
+- **WhatsApp:** Expuesto como el ejemplo clásico del MLP. Existen incontables sistemas de mensajería gratuita que hacen lo mismo a nivel tareas, pero el usuario elige de forma masiva a WhatsApp debido a que logró una vinculación que excede lo estrictamente funcional.
+    
+      
+    
+- **Spotify vs. YouTube Music:** Se cuestionó por qué un usuario se ancla con una de estas apps cuando ambas brindan el acceso a los mismos repertorios musicales. Se apuntó a que muchas veces esa adopción inicial y gusto repetido es evidencia del concepto de adorabilidad (MLP).
+    
+      
+    
+- **Moodle:** Se hizo una breve mención de Moodle como caso sumado recientemente a las clases para ejemplificar aspectos del MVP.
+    
+      
+    
+
+## Puntos que el docente remarcó
+
+- **Estimación no es compromiso:** Repitió exhaustivamente que las estimaciones nunca son compromisos rígidos y nunca equivalen al plan final. Son exclusivamente variables e insumos de protección técnica para que luego negocio redacte el compromiso.
+    
+      
+    
+- **Responsabilidad de la tarea en Planning Poker:** Los únicos autorizados a dar su estimación son los desarrolladores (o hacedores) de la tarea. No se admiten estimadores externos ni expertos pasivos.
+    
+      
+    
+- **Límite en la escala de Story Points:** Al estimar, las tarjetas verdes o recomendadas son menores a 8. Si una User Story resulta con un 8, 13, 20 o más, esto refleja que el requerimiento se salió de rango o que es inconmensurablemente más grande que la canónica (valor 1). Remarcó tajantemente que en estos casos, la tarea debe desglosarse o dividirse.
+    
+      
+    
+- **Alineación con el criterio INVEST:** La profesora subrayó la regla "Small" (las tareas gigantes deben partirse) y la "Estimable" (si tiran un comodín de infinito, un cero o un signo de pregunta, la historia carece de detalles funcionales suficientes para evaluarse y hay que preguntar al Product Owner).
+    
+      
+    
+- **La palabra 'Mínimo' no es tamaño físico:** En el MVP, el término mínimo no hace referencia a que el producto resultante sea "chiquito" o limitado a nivel visual. Remarcó que MVP significa esfuerzo atómico; puede ser un sistema enorme y muy complejo si esa complejidad era "lo estrictamente indispensable" para validar el valor.
+    
+      
+    
+- **Atención y compromiso (al inicio de clase):** La profesora recriminó con decepción que los alumnos hayan alegado desconocer temas de Ingeniería de Software (Procesos Definidos vs. Empíricos) enseñados explícitamente en la primera clase, pidiéndoles mayor compromiso con la cursada.
+    
+      
+    
+
+## Para el trabajo práctico / evaluación
+
+- **Poker Planning en la Práctica:** En la próxima clase práctica, los docentes llevarán adelante un laboratorio de Poker Estimation y MVP. Se instruyó a los alumnos a descargar o imprimir obligatoriamente un mazo físico de cartas para Planning Poker desde un enlace proporcionado en las diapositivas.
+    
+      
+    
+- **Evaluación General:** Todos los temas vistos en esta clase (tanto estimaciones ágiles como validación/MVP) entran en los temarios para rendir el examen parcial teórico y los trabajos prácticos.
+    
+      
+    
+- **Próxima Clase Teórica:** Salvo que surjan medidas de fuerza como el paro del día, la próxima clase será presencial. El tema principal será la gestión tradicional de proyectos, las estimaciones tradicionales (horas, costos, recursos) y los componentes de un proyecto de software.
+    
+      
+    
+
+## Dudas y cosas para revisar
+
+- **Estimaciones Tradicionales:** El tema quedó sumamente acotado en la clase ya que la profesora lo usó sólo como contexto previo a la estimación ágil. Se indicó que el conocimiento en profundidad de estimaciones tradicionales, horas lineales y calendarios quedará como pilar para la clase siguiente.
+    
+      
+    
+- **Scrum, roles y pautas del Agilismo (Spike/Developers):** Durante la técnica de cartas, los estudiantes consultaron por divisiones de tareas, Scrum Masters, roles de quienes estiman y conceptos híbridos como "Spike". La docente frenó momentáneamente estas dudas marcando que el rompecabezas terminará de encajar orgánicamente cuando vean en detenimiento el framework Scrum propiamente dicho más adelante.
+    
+      
+    
+- **División de User Stories mayores a 8:** Hubo un pequeño momento de confusión sobre si desglosar una historia inmensa implicaba crear subtareas técnicas (tasks) o nuevas entidades de negocio completas. Se determinó que se debe enunciar de forma distinta la necesidad para dar origen a dos (o más) User Stories independientes, pero este proceso analítico en la práctica podría requerir mayor profundización por parte de los alumnos.
