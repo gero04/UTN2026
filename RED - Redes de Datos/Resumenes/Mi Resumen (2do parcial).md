@@ -327,22 +327,31 @@ Esta técnica:
 - Utiliza máscaras cortas para direccionar muchos hosts.
 - Necesita de nuevo protocolos de encaminamiento.
 - Se implementa un nivel más de jerarquía en la dirección IPv4.
-- 
-
-
-
-
-
-
-## ICMP
-### Temario
+Para aplicar VLSM, usaremos un diseño jerarquico que consiste en subdividr una red principal adaptando las mascaras bit por bit segun la necesidad real de hosts. Para no cometer errores ni solapar direcciones, se sigue una secuencia de pasos:
+1. **Ordenar los requerimientos de mayor a menor**: Tenemos que hacer una lista de las subredes que necesitamos (incluyendo los enlaces punto a punto de los routers) y ordenarlas estrictamente según la cantidad de hosts que requiera cada una, de mayor a menor.
+2. **Calcular los bits de host para el requerimiento actual**: Tomando la primera red de la lista, calcular cuántos bits de host ($h$) necesitamoss utilizando la fórmula $2^h - 2 \ge \text{hosts requeridos}$.
+3. **Establecer la nueva máscara**: Los bits restantes del octeto se destinan a la subred. Esto alargará la máscara original (por ejemplo, pasando de un prefijo /24 a un /26 si dejamos 6 bits para hosts)
+4. **Calcular las direcciones de la subred**:
+	1. Dirección de subred: Primera IP del bloque (bits de host en 0).
+	2. Broadcast: Última IP del bloque (bits de host en 1).
+	3. Rango utilizable: Las IPs que quedan en el medio (desde subred + 1 hasta broadcast - 1).
+5. **Repetir para la siguiente subred**: Tomamos la dirección IP inmediatamente posterior al broadcast calculado en el paso anterior y repetimos el proceso para el siguiente requerimiento de la lista. Como este requerimiento será igual o menor, la máscara se mantendrá o se alargará más (por ejemplo, a /27 o /28), segmentando los bloques libres de forma eficiente.
+6. **Direccionar los enlaces WAN al final**: Las conexiones punto a punto entre routers solo necesitan 2 direcciones válidas, por lo que siempre se calculan al final utilizando una máscara /30 (que solo deja 2 bits para hosts y evita cualquier desperdicio).
+### 3.8 Administracion de direcciones IP
+La administracion y asignacion  de direcciones IP en el mundo funciona de manera jerarquica, donde IANA y los RIR son entidades responsables de manejar y controlar la cadena de distribucion, actuando como los eslabones principales de esta.
+#### 3.8.1 IANA (Internet Assigned Number Authority)
+Es el responsable de distribuir parte del espacio global de direcciones IP y los numeros de sistemas autonomos a los RIR. En la estructura jerarquica, es la entidad de maxima autoridad a nivel global, donde su funcion clave es garantizar el orden global y asegurar que no existan duplicaciones de direcciones IP en el planeta.
+#### 3.8.2 RIR (Regional Internet Registry)
+Son los organismos responsables de administrar, registrar y asignar las direcciones IP y los números de sistemas autónomos **dentro de su región geográfica específica**. El mundo está dividido en **5 grandes zonas o RIRs**. Estos registros reciben los bloques de la IANA y se encargan de repartirlos a los proveedores de servicios de Internet (ISPs) y a las grandes empresas de su área. En Latinoamerica y el Caribe, el RIR encargado es LACNIC.
+## 4. ICMP
+### 4.1 Temario
 - Necesidad del protocolo ICMP
 - Caracteristicas
 - Formato de la cabecera de ICMP
 - Tipos de mensajes
 - Aplicaciones
 - Protocolo ARP
-### ICMPv4
+### 4.2 ICMPv4
 ICMP (**I**nternet **C**ontrol **M**essage **P**rotocol version 4) es un protocolo de la capa de red que forma parte de la familia de protocolos TCP/IP. Su función principales permitir que los dispositivos de una red intercambien mensajes de contorl, diagnostico y notificacion de errores durante la transmision de datos mediante IPv4. A diferencia de otros protocolos como **TCP** O **UDP**, **ICMP** no se usa para transportar informacion de aplicaciones de usuario, sino para informar sobre el estado de las comunicaciones en la red. 
 Como el protocolo IPv4 no es orientado a conexion, (y entrega un servicio de comunicacion de "menor" esfuerzo) esto termina generando los siguientes problemas:
 - Duplicacion y/o perdida de datagramas o paquetes
@@ -356,13 +365,118 @@ Para alivianar esto, se creó ICMP para ayudar a darle fiabilidad a las conexion
 - Notificar cuando un paquete no llego a destino y el porqué
 - Transporta mensajes en la capa de red
 - Trabaja en conjunto con IPv4
-### Importancia del ICMP
+### 4.3 Importancia del ICMP
 Cuando un paquete IP no puede llegar a su destino o se presenta algun problema durante el recorrido, ICMP permite que los dispositivos involucrados informen la situacion al emisor. Gracias a ICMP podemos:
 - Detectar problemas de conectividad
 - Verificar si un equipo está disponible en la red
 - Determinar la ruta seguida por los paquetes
 - Informar errores de direccionamiento o encaminamiento
 - Facilitar tareas de monitoreo y administracion de redes
-### Caracteristicas de ICMP
+### 4.4 Caracteristicas de ICMP
 - Complemento a IP: Como vimos anteriormente, IPv4 es un protocolo no fiable, en el sentido de que no esta orientado a la conexion, y por eso ICMP se crea como su complemento.
 - Operacion en Capa de Red: Pertenece y opera en la capa 3 (Interred o Internet en TCP/IP y Red en OSI)
+- Encapsulamiento: Sus mensajes se encapsulan directamente dentro de un paquete IP. En el caso de IPv4, se identifica con el valor 1 en el campo Protocolo de la cabecera IP.
+- Cabecera de 8 bytes: Posee una cabecera de 8 bytes, de los cuales 4 son fijjos y el resto depende del tipo de mensaje. Sus campos son:
+	- Tipo: Define la funcion del mensaje.
+	- Codigo: Especifica subtipos dentro del tipo de mensaje.
+	- Suma de verificacion: Controla la integridad del mensaje para saber si descartarlo o no.
+	- Encabezado opcional
+	- Datos: Copia la cabecera IPv4 original y los primeros bytes de datos del paquete que fallo para que el host emisor identifique exactamente que paquete no fue entregado.
+- Bajo consumo de recursos: Los mensajes ICMP soy muy pequeños, por lo que no consumen un ancho de banda significativo de la red.
+- Diagnostico y control de la red: Permite controlar el estado de la red midiendo los tiempos que tardan en ir y volver los paquetes. Es la herramienta subyacente de comandos de diagnostico como:
+	- `ping`: Utiliza mensajes de solicitud de eco (Echo Request) y respuesta de eco (Echo Response) para verificar si un host esta activo.
+	- `tracert` / `traceroute`: Utiliza los mensajes de tiempo de vida excedido (Time Exceeded) enviados por los routers para determinar la ruta que sigue un paquete.
+- Soporte de versiones: Existe una version de ICMP para cada protocolo de red.
+A grandes rasgos, ICMP encapsula sus mensajes dentro de paquetes IPv4. Cuando ocurre una situacion particular en la red, un router o un host genera un mensaje ICMP y lo envia al origen del trafico para informarle lo sucedido. Por ejemplo:
+1. Una computadora envia un paquete IP.
+2. Un router detecta que no puede enviarlo.
+3. El router genera un mensaje ICMP indicando el problema.
+4. El mensaje regresa al emisor para que este conozca la causa del fallo.
+#### 4.4.1 ICMP y la seguridad
+Aunque ICMP es fundamental para el diagnostico de redes, tambien puede ser utilizado en ataques o actividades de reconocimiento. Por ello, muchas organizaciones:
+- Filtran ciertos tipos de mensajes ICMP.
+- Limitan respuestas a solicitudes Echo.
+- Monitorean trafico ICMP anomalo.
+SIn embargo, bloquear completamente ICMP puede dificultar la deteccion de problemas de red y afectar el funcionamiento de herramientas de diagnostico.
+
+### 4.5 Formato de la cabecera de ICMP
+El mensaje que mande ICMP se va a encapsular en un paquete IPv4. Es decir, se envia un paquete IP comun, y la carga util de este paquete (el espacio de datos que normalmente usaria un segmento TCP o UDP de la capa de transporte) se ocupa con la cabecera y los datos de ICMP. Al hacer esto, ICMP se salta la capa de transporte. Se compone de lo siguiente:
+
+|  Campo o componente   |                                 Paquete IPv4 normal                                 |                                                                   Paquete IPv4 con ICMP                                                                    |
+| :-------------------: | :---------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|     Version (4b)      |                        Indica la version 4 en binario (0100)                        |                                                                    Igual que el normal                                                                     |
+|       IHL (4b)        |                            Mide el tamaño de la cabecera                            |                                                                    Igual que el normal                                                                     |
+|    Protocolo (8b)     |      Contiene un valor que identifica al protocolo (6 para TCP y 17 para UDP)       |                 Contiene el valor 1 que corresponde a ICMP. Esto le avisa al receptor que no debe buscar un puerto TCP/UDP sino leer ICMP                  |
+| TTL, Checksum y demas |     Campos estándar para el control de bucles y la integridad de la cabecera IP     |                                                                    Igual que el normal                                                                     |
+| IPs origen y destino  |         IP del host que envía el mensaje y del host/servidor que lo recibe.         |                                 IP del dispositivo que genera el ICMP (puede ser un router intermedio) y del host destino.                                 |
+|        Payload        | Comienza con la **Cabecera de Capa de Transporte** (Cabecera TCP o UDP de puertos). |                    **No hay capa de transporte**. Comienza directamente la **Cabecera ICMP de 8 bytes** (Tipo, Código, Checksum, etc.).                    |
+|     Datos finales     |        Contiene los **Datos de la aplicación** (ej. texto, HTTP, archivos).         | Contiene **Datos específicos de ICMP**: En un Ping, datos de prueba; en un error, una copia de la cabecera IP que falló para que el emisor la identifique. |
+Es decir, queda de la siguiente manera:
+![[Pasted image 20260830125735.png]]
+Donde:
+- Cabecera IPv4: Es la cabecera del paquete IP que viaja por la red en el momento y porta el mensaje de error. Sus campos mas importantes son:
+	- IP Origen: La direccion IP del router que detecto el problema y genero el mensaje ICMP.
+	- IP Destino: La direccion IP del equipo que origino el trafico original.
+- Mensaje ICMP: Se organiza en dos palabras de 32 bits, totalizando en 8 bytes o 64 bits
+	- Tipo: Define la funcion general o la categoria del mensaje ICMP.
+	- Codigo: Funciona como un subtipo para especifica aun mas la causa del mensaje definido en el campo anterior (Tipo).
+	- Suma de verificacion/Checksum: Verifica la integridad de todo el mensaje ICMP.
+	- Encabezado opcional: Es de longitud fija pero contenido variable, depende del tipo de mensaje ICMP
+	- Datos: Contiene la cabecera IPv4 del paquete original que se envio y termino siendo descartado, y 8 bytes de datos que corresponden al inicio de la cabecera TCP/UDP
+### 4.6 Tipos de mensajes ICMP
+Este protocolo plantea la existencia de 9 mensajes en total, siendo 5 de error y 4 de informacion.
+
+|         Mensaje         | Numero de tipo |   Funcion   |
+| :---------------------: | :------------: | :---------: |
+| Destination Unreachable |       3        |    Error    |
+|      Source Quench      |       4        |    Error    |
+|        Redirect         |       5        |    Error    |
+|      Time Exceeded      |       11       |    Error    |
+|    Parameter Problem    |       12       |    Error    |
+|      Echo Request       |       8        | Informacion |
+|       Echo Reply        |       0        | Informacion |
+|    Timestamp Request    |       13       | Informacion |
+|     Timestamp Reply     |       14       | Informacion |
+En verdad, como el campo Tipo son 8 bits, podrian ser hasta 256 tipos de mensajes, pero estos son los mas importantes y los que vimos en clase.
+#### 4.6.1 Destination Unreachable
+Este mensaje es generado por un router intermedio que no puede encaminar el paquete, y se activa de manera automatica cuando un paquete IP es descartado en el camino porque no pudo ser entreado a su destino final. Se identifica con el **tipo 3** en la cabecera ICMP y tiene los siguientes codigos
+
+| Codigo |                     Nombre                     | Significado                                                                                                                                                              |
+| :----: | :--------------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|   0    |                Red inalcanzable                | La red de destino no existe                                                                                                                                              |
+|   1    |               Host inalcanzable                | La red de destino si existe y es alcanzable, pero el host destino no responde                                                                                            |
+|   2    |             Protocolo inalcanzable             | El protocolo de nivel de transporte no esta activo o no es soportado                                                                                                     |
+|   3    |              Puerto inalcanzable               | El puerto UDP/TCP no tiene ningun servicio escuchando                                                                                                                    |
+|   4    | Requiere fragmentar pero el bit DF esta activo | El paquete que se esta enviando es demasiado grande para el siguiente enlace fisico y el router necesita dividirlo pero no puede por el bit DF                           |
+|   5    |              Source route failed               | Un paquete quiere usar IP Source Routing (especifica el camino exacto por donde viajar) pero un router en ese camino no puede mandar el paquete al siguiente dispositivo |
+|   6    |           Red de destino desconocida           | El router desconoce por completo la red de destino                                                                                                                       |
+|   7    |            Host destino desconocido            | El host de destino no existe en la red especificada                                                                                                                      |
+|   8    |              Source host isolated              | \[ OBSOLETO \] El router no puede encaminar el paquete porque el host emisor esta completamente aislado de la red                                                        |
+|   9    |     Comunicacion prohibida con red destino     | Un firewall/politica esta bloqueando el acceso a la red                                                                                                                  |
+|   10   |    Comunicacion prohibida con host destino     | Un firewall/politica esta bloqueando el acceso al host                                                                                                                   |
+|   11   |     Red inalcanzable por tipo de servicio      | No existe ninguna ruta hacia la red de destino que sea capaz de soportar el Tipo de Servicio (TOS) solicitado en el paquete IP.                                          |
+|   12   |     Host inalcanzable por tipo de servicio     | Indica que, aunque la red es accesible, el host de destino no puede ser alcanzado bajo los parámetros del Tipo de Servicio (TOS) configurados por el emisor.             |
+#### 4.6.2 Source Quench
+Es un mensaje de la capa de red utilizado como una herramienta activa para el **control de congestión**, no tiene codigo de subcategoria por ende se le asigna el codigo 0 que se define como "No Code". Su objetivo principal es evitar que la red colapse cuando un router se ve desbordado por el volumen de tráfico entrante, notificando al host emisor para que disminuya su velocidad de transmisión.
+Dicho en paisano, se utiliza para el control de congestión por parte del router cuando el buffer de mensajes está llegando al límite, lo que se hace es decirle al origen que afloje con la cantidad de mensajes por segundo. 
+#### 4.6.3 Redirect
+Este si posee codigos de subcategoria y lo usa un router para notificar al host local que existe una ruta mas optima o directa, o por otra cualquier razon, a traves de otro router conectado en su misma red. Tiene los siguientes codigos:
+
+| Codigo | Nombre                                                | Significado                                                                                                                                                                      |
+| ------ | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0      | Redirect Datagram for the Network                     | Indica al host emisor que configure un camino más óptimo para todo el tráfico que vaya dirigido a esa red de destino completa.                                                   |
+| 1      | Redirect Datagram for the Host                        | Indica al host emisor que configure una ruta directa únicamente para llegar a ese host de destino específico (dirección IP individual).                                          |
+| 2      | Redirect Datagram for the Type of Service and Network | Solicita desviar el tráfico de una red completa hacia otro router, aplicando la regla de forma exclusiva para aquellos paquetes que tengan un Tipo de Servicio (ToS) particular. |
+| 3      | Redirect Datagram for the Type of Service and Host    | Solicita desviar el tráfico de un host individual hacia otro router, aplicando el desvío únicamente a los paquetes que coincidan con un Tipo de Servicio (ToS) específico.       |
+#### 4.6.4 Time Exceeded
+Es generado por un router o por el host de destino cuando un paquete no puede completar su trayecto antes de que expiren sus límites temporales. Este mecanismo es vital para evitar la congestión infinita de datos en la red ocasionada por bucles o loops de encaminamiento.
+
+| Codigo | Nombre                            | Significado                                                                                                          |
+| ------ | --------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| 0      | Time to Live exceeded in transit  | El campo TTL de la cabecera del paquete IP llego a cero antes de alcanzar el host destino                            |
+| 1      | Fragment reassembly time exceeded | Enviando por el host destino cuando no recibe todas las partes fragmentadas de un paquete dentro de un tiempo limite |
+#### 4.6.5 Parameter Problem
+#### 4.6.6 Echo Request
+#### 4.6.7 Echo Reply
+#### 4.6.8 Timestamp Request
+#### 4.6.9 Timestamp Reply
