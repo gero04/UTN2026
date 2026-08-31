@@ -414,7 +414,7 @@ El mensaje que mande ICMP se va a encapsular en un paquete IPv4. Es decir, se en
 
 Es decir, queda de la siguiente manera:
 
-![[Pasted image 20260830125735.png]]
+![[FormatoCabeceraICMP.png]]
 
 Donde:
 - Cabecera IPv4: Es la cabecera del paquete IP que viaja por la red en el momento y porta el mensaje de error. Sus campos mas importantes son:
