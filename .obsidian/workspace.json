@@ -11,12 +11,14 @@
             "id": "b2ed500ecd173d5d",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Pasted image 20260412172334.png"
+                "file": "RED - Redes de Datos/Resumenes/Mi Resumen (2do parcial).md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260412172334"
+              "icon": "lucide-file",
+              "title": "Mi Resumen (2do parcial)"
             }
           }
         ]
@@ -44,7 +46,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de archivos"
             }
           },
           {
@@ -171,30 +173,30 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
     }
   },
   "active": "b2ed500ecd173d5d",
   "lastOpenFiles": [
-    "RED - Redes de Datos/Resumenes/img/FormatoCabeceraICMP.png",
+    "ICS - Ingenieria y Calidad de Software/Notas de Clases/Teorico.md",
+    "ICS - Ingenieria y Calidad de Software/Notas de Clases/Practico.md",
+    "RED - Redes de Datos/Resumenes/Mi Resumen (2do parcial).md",
+    "Pasted image 20260830125735.png",
     "Pasted image 20260829210822.png",
     "Pasted image 20260829202101.png",
     "Pasted image 20260829194940.png",
     "Pasted image 20260829194911.png",
     "Pasted image 20260829194828.png",
-    "Pasted image 20260412172334.png",
-    "ICS - Ingenieria y Calidad de Software/Notas de Clases/Teorico.md",
-    "RED - Redes de Datos/Resumenes/Mi Resumen (2do parcial).md",
     "RED - Redes de Datos/Resumenes/img/Trama802.11.png",
     "RED - Redes de Datos/Resumenes/img/PilaDeProtocolosIEE802.11.png",
+    "Pasted image 20260412172334.png",
     "RED - Redes de Datos/Resumenes/img",
-    "ICS - Ingenieria y Calidad de Software/Notas de Clases/Practico.md",
     "RED - Redes de Datos/Resumenes/Resumen Segundo Parcial Redes.pdf",
     "ICS - Ingenieria y Calidad de Software/Presentaciones de clases/00 2026 Ingenieria y Calidad de Software 2C.pdf",
     "ICS - Ingenieria y Calidad de Software/Presentaciones de clases/TDD Lineamientos con Taxi Mobile .pdf",

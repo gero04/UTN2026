@@ -185,11 +185,6 @@ Especifica la dirección MAC del dispositivo inalámbrico que está realizando l
 Transporta la carga útil de datos proveniente de las capas superiores, permitiendo un tamaño de hasta 2312 bytes. 
 #### 1.13.8 FCS (Frame Check Sequence)
 Contiene un código de verificación de 32 bits (CRC) que el receptor utiliza para confirmar que la trama no sufrió errores durante su transporte
-
-
-
-
-
 ## 2. Direccionamiento IPv4 - VLANs
 ### 2.1 Temario
 - Necesidad de las VLANs
