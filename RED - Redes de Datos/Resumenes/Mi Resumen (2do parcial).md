@@ -555,7 +555,9 @@ Por ejemplo, podemos tener la siguiente situacion:
 | --------------------- | --------------------- |
 | IP 192.168.1.16       | IP 192.168.1.4        |
 | MAC 24:F5:AA:70:7E:1F | MAC 70:4F:57:83:54:92 |
+##### Paso 1: La solicitud ARP - Tipo 8 y Opcode 1
 PC-A quiere mandar un paquete IP a PC-B pero no conoce su MAC. Así es como se estructuran la trama Ethernet y el mensaje ARP que viajan por el cable en formato broadcast:
+
 ==***Cabecera Ethernet***==
 
 | MAC Destino       | MAC Origen        | EtherType |
@@ -574,3 +576,47 @@ PC-A quiere mandar un paquete IP a PC-B pero no conoce su MAC. Así es como se e
 | Sender IP     | 192.168.1.16      | IP de PC-A                                 |
 | Target MAC    | 00:00:00:00:00:00 | Se llena de ceros porque PC-A no lo conoce |
 | Target IP     | 192.168.1.4       | La IP que PC-A quiere buscar               |
+##### Paso 2: La Respuesta ARP - Tipo 8 y Opcode 2
+PC-B recibe el mensaje de broadcast, ve que preguntan por su IP y responde directamente, mediante mensaje Unicast, a la MAC de PC-A
+
+==***Cabecera Ethernet***==
+
+| MAC Destino       | MAC Origen        | EtherType |
+| ----------------- | ----------------- | --------- |
+| 24:F5:AA:70:7E:1F | 70:4F:57:83:54:92 | 0x0806    |
+==***Cuerpo del mensaje ARP***==
+
+| Componente    | Valor             | Significado                      |
+| ------------- | ----------------- | -------------------------------- |
+| Hardware Type | 1                 | Ethernet                         |
+| Protocol Type | 0x0800            | IPv4                             |
+| Hardware Size | 6                 | Bytes de la direccion MAC        |
+| Protocol Size | 4                 | Bytes de la direccion IP         |
+| Opcode (OP)   | 2                 | Request                          |
+| Sender MAC    | 70:4F:57:83:54:92 | MAC de PC-B                      |
+| Sender IP     | 192.168.1.4       | IP de PC-b                       |
+| Target MAC    | 24:F5:AA:70:7E:1F | MAC de PC-A que hizo la consulta |
+| Target IP     | 192.168.1.16      | IP de PC-A                       |
+
+### 5.2 Algunas consideraciones de ARP
+- Para evitar el envío de un paquete ARP request cada vez que se necesite un host, el equipo puede mantener una cache con la dirección IP y su correspondiente dirección física en su tabla ARP (ARP cache).
+- Cada entrada en la tabla ARP suele ser “envejecida” para que luego de cierto tiempo de inactividad sea eliminada.
+- Cuando una computadora recibe un ARP reply se actualiza su entrada en la tabla ARP.
+- El protocolo ARP es stateless (es un protocolo sin estado que no requiere autenticación para un simple paquete ARP ), por lo tanto la mayoría de los sistemas operativos actualizarán su cache si reciben una respuesta (reply), sin importar si enviaron o no un pedido (request).
+### 5.3 El comando ARP (Windows y Linux)
+El comando **arp** se utiliza en ambos sistemas operativos para visualizar y administrar la **tabla caché ARP**, que asocia las direcciones IP (Capa 3) con sus correspondientes direcciones MAC físicas (Capa 2) de los equipos que están dentro de la misma red local.
+Aunque el funcionamiento de fondo es el mismo, sus parámetros principales se usan así:
+
+**En Windows**
+- `arp -a`: Permite **visualizar** la tabla ARP actual, detallando si las IP se aprendieron de forma dinámica o si se configuraron estáticamente.
+- `arp -s <IP> <MAC>`: Define una **entrada estática** permanente para que la relación IP-MAC no expire en la caché (por ejemplo: `arp -s 192.168.0.10 12-34-56-78-9a-bc`).
+- `arp -d` ó `arp -d <IP>`: Se utiliza para **eliminar** todas las entradas de la tabla o borrar un registro específico.
+![[Pasted image 20260831210202.png]]
+
+**En Linux**
+- `arp -a` o `arp -n`: Muestra la tabla ARP local. El parámetro **-n** es muy utilizado en Linux porque **muestra las direcciones IP en formato puramente numérico**, evitando demoras al no intentar resolver los nombres de host por DNS.
+- `arp -s <IP> <MAC>`: Asocia manualmente una dirección IP a una MAC de forma estática.
+- `arp -d <IP>`: Borra un registro específico de la caché para obligar al sistema a realizar un nuevo broadcast ARP la próxima vez que intente mandar datos a ese destino.
+![[Pasted image 20260831210226.png]]
+
+	
