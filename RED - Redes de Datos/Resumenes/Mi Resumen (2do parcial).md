@@ -618,5 +618,210 @@ Aunque el funcionamiento de fondo es el mismo, sus parámetros principales se us
 - `arp -s <IP> <MAC>`: Asocia manualmente una dirección IP a una MAC de forma estática.
 - `arp -d <IP>`: Borra un registro específico de la caché para obligar al sistema a realizar un nuevo broadcast ARP la próxima vez que intente mandar datos a ese destino.
 ![[Pasted image 20260831210226.png]]
+### 5.4 ARP en Wireshark
+#### Solicitud ARP
+![[Pasted image 20260902201940.png]]
+#### Respuesta ARP
+![[Pasted image 20260902202034.png]]
+## 6. Protocolo y direccionamiento IPv6 
+### 6.1 Objetivos del protocolo IPv6
+- Manejar millones de hosts: El espacio de direcciones de IPv6 se expande de 32 a 128 bits, ofreciendo una cantidad prácticamente ilimitada de IPs para absorber el crecimiento de dispositivos e Internet de las cosas. 
+- Reducir el tamaño de las tablas de encaminamiento: Al aplicar un direccionamiento jerárquico y geográfico, los routers troncales de Internet pueden consolidar múltiples redes en un único prefijo utilizando la sumarización de rutas.
+- Simplificar el protocolo: Se eliminaron campos de control secundarios de la cabecera (como el IHL y el Checksum), haciendo que el encabezado sea de tamaño fijo para lograr un procesamiento de paquetes mucho más rápido en los routers.
+- Proporcionar mayor seguridad: A diferencia de IPv4, donde es una característica opcional, IPv6 incorpora seguridad criptográfica de forma nativa e integrada en su propio diseño.
+- Desplazamiento de hosts sin cambiar de dirección: Permite la movilidad de los dispositivos de una red física a otra de manera transparente, manteniendo sus conexiones activas sin verse obligados a reconfigurar o modificar su dirección lógica.
+- Permitir que el protocolo evolucione: En lugar de crear un protocolo nuevo ante futuras necesidades, IPv6 permite añadir funcionalidades adicionales encadenando cabeceras de extensión de forma ordenada mediante el campo Next Header.
+- Permitir la coexistencia de IPv4 e IPv6: Facilita que ambos protocolos convivan de forma simultánea en la red durante la migración a través de tecnologías de transición como la tunelización (encapsular IPv6 dentro de IPv4).
+### 6.2 Características avanzadas de IPv6
+Cada una de estas funciones representa un salto tecnológico importante respecto a las limitaciones que tenía IPv4.
+#### 6.2.1 Espacio de direccionamiento más grande
+IPv6 expande el tamaño de las direcciones de los 32 bits tradicionales de IPv4 a 128 bits (16 bytes). Esto significa pasar a la cifra de $3.4 \times 10^{38}$ direcciones IP únicas. Es un espacio tan masivo que permite que prácticamente cualquier objeto del planeta (Internet de las cosas) tenga su propia dirección IP pública sin que se vuelvan a agotar.
+- IPv4: 32 bits o 4 bytes de longitud, lo que equivale a 4,200,000,000 nodos direccionables
+- IPv6: 128 bits o 16 bytes, que es 4 veces los bits de IPv4. Esto equivale a $3.4 x 10^{38}$ nodos direccionables o $5 x 10^{28}$ direcciones por persona
+![[Pasted image 20260903195548.png]]
+#### 6.2.2 Alcance y flexibilidad Global
+Las direcciones IPv6 tienen un alcance adaptativo según el tipo de comunicación que necesite el dispositivo. Por diseño, una misma interfaz de red puede manejar múltiples direcciones a la vez:
+- Enlace Local (Link-Local): Empieza con FE80 y sirve para hablar con los equipos de la misma red local física.
+- Enlace Local Único (ULA): Empieza con FC y es como las IPs privadas de IPv4 para la comunicación interna dentro de una organización.
+- Enlace Global: Comienza con 2 o 3 y equivale a una dirección pública, proporcionando conectividad de extremo a extremo con el mundo.
+#### 6.2.3 Sumarización
+Consiste en resumir un bloque de direcciones consecutivas de clientes bajo un prefijo de red mucho más corto (por ejemplo, resumir redes de clientes /48 en un solo prefijo /32 anunciado por un ISP). Al estar las direcciones distribuidas de forma ordenada y geográfica, los routers de la troncal de Internet pueden consolidar sus rutas, logrando tablas de enrutamiento compactas y ágiles. 
+![[Pasted image 20260903195637.png]]
+#### 6.2.4 Plug-and-play (Autoconfiguración)
+Es la capacidad de un host de conectarse a la red y obtener conectividad automáticamente sin configuraciones manuales ni necesidad de contar con un servidor DHCP. El host se "autoinventa" su propia IP escuchando los anuncios del router local (Router Advertisements), combinando el prefijo de red que este le envía con un identificador de interfaz propio generado de manera aleatoria o utilizando su dirección MAC física (mecanismo EUI-64).
+#### 6.2.5 End to end sin NAT
+Como el espacio de direcciones globales es casi ilimitado, en IPv6 no se necesita traducir direcciones (NAT). Todos los dispositivos pueden volver a tener una IP pública única global, lo que restaura la comunicación directa "extremo a extremo", facilitando el rastreo de paquetes y eliminando la latencia que causaba NAT al tener que reescribir constantemente las cabeceras de cada datagrama. 
+#### 6.2.6 Cabecera más simple
+Aunque físicamente la cabecera básica de IPv6 es más grande que la de IPv4 para poder alojar las nuevas IPs de 128 bits, cuenta con una cantidad menor de campos de control. Al unificar el tamaño de la cabecera de longitud fija, los routers intermedios de Internet pueden procesar los paquetes en hardware a velocidades más altas. 
+![[Pasted image 20260903195714.png]]
+![[Pasted image 20260903195737.png]]
+#### 6.2.7 Encaminamiento eficiente
+Debido a que el direccionamiento se distribuye de manera jerárquica y geográfica, los routers intermedios no necesitan analizar los 128 bits de la IP para tomar una decisión. Les basta con evaluar unos pocos bits de la cabecera inicial para redirigir el paquete hacia la interfaz correcta, logrando que el enrutamiento mundial sea escalable y rápido. 
+#### 6.2.8 No broadcasts
+En IPv6 se eliminó por completo el broadcast porque consumía muchos recursos de ancho de banda y CPU en las tarjetas de red de los hosts locales, obligando a todos los equipos a procesar paquetes que no eran para ellos. En su lugar, todas esas funciones de descubrimiento se realizan mediante Multicast (multidifusión dirigida únicamente a grupos de interés, que empieza con el prefijo FF) y Anycast (envío al servidor más cercano físicamente). 
+#### 6.2.9 No checksums
+En IPv4, el campo Header Checksum se calculaba en cada salto porque el campo TTL cambiaba en cada router, lo que generaba un proceso lento. En IPv6, asumiendo que los medios físicos modernos de comunicación son fiables, se eliminó la suma de verificación de la cabecera IP, delegando este control de integridad a otras capas (capa de transporte (TCP/UDP) o la capa de enlace). 
+#### 6.2.10 Cabeceras de Extensión
+En lugar de cargar la cabecera básica con opciones de control, IPv6 utiliza un diseño modular donde las opciones adicionales se manejan como cabeceras de extensión encadenadas. Utilizando el campo Next Header (Siguiente cabecera), se pueden ir añadiendo bloques de control específicos solo cuando se necesite, lo que permite que el protocolo evolucione sin alterar la cabecera básica. 
+![[Pasted image 20260903195823.png]]
+![[Pasted image 20260903195914.png]]
+![[Pasted image 20260903195939.png]]
+Donde NH significa Next Header
+#### 6.2.11 Etiquetas de flujo (Flow Label)
+Es un nuevo campo de 20 bits incorporado en la cabecera de IPv6 para proveer QoS de forma nativa. Permite marcar todos los paquetes que pertenecen a una misma comunicación específica. Al ver esta etiqueta, los routers identifican el flujo y encaminan todos sus paquetes por el mismo camino físico, asegurando que lleguen rápido, ordenados y sin las fluctuaciones de retardo de las redes de conmutación de paquetes tradicionales.
+### 6.3 Representación de la dirección IPv6
+Una dirección IPv6 posee 128 bits, como ya vimos, y se representa por 8 grupos de 4 dígitos hexadecimales separados por el símbolo **:**. Por ejemplo:
+```
+2031:0000:130F:0000:0000:09C0:876A:130B
+```
+Los ceros a la izquierda en cada grupo son opcionales, entonces esta dirección se puede resumir como:
+```
+2031:0:130F:0:0:9C0:876A:130B
+```
+Y los grupos sucesivos de 0 se pueden representar como **::**, permitiendo un solo símbolo de este tipo por dirección:
+```
+2031:0:130F::9C0:876A:130B
+```
+### 6.4 Modelo de direccionamiento IPv6
+A diferencia del modo en el que se comportaba IPv4, en IPv6 las direcciones se asignan a las interfaces, y éstas esperan tener múltiples direcciones. 
+A su vez, las direcciones tienen tiempo de vida, y diferentes alcances que definen qué tan lejos puede viajar el paquete. De mayor a menor, tenemos alcance global, local único y local de enlace.
+![[Pasted image 20260903202825.png]]
+#### 6.4.1 Direcciones de alcance global
+Los primeros tres bits obligatorios son `001`. Al estar fijos esos bits iniciales, causa que todas las direcciones públicas globales comiencen en hexadecimal con un **2** **o un** **3**. Son el equivalente a las IPs públicas tradicionales de IPv4 y proporcionan conectividad global pura de **extremo a extremo** a través de Internet, erradicando por completo el uso de técnicas de traducción de direcciones (NAT).
+![[Pasted image 20260903220008.png]]
+![[Pasted image 20260903220226.png]]
+#### 6.4.2 Direcciones de alcance local único (a nivel empresa) o ULA
+Las direcciones **ULA** (que empiezan con el prefijo **FC00::/7**) corresponden estrictamente al alcance **Local Único**. Están diseñadas para la comunicación interna entre distintas subredes de una misma organización o sitio, pero los routers tienen prohibido encaminarlas hacia la Internet pública. Abarcan el rango de **FC00::** a **FD00::**.
+```
+FC01:0:0:2::2
+```
+#### 6.4.3 Direcciones de alcance local de enlace (o link-local)
+Todas las direcciones locales de enlace comienzan con el prefijo **FE8 (1111 1110 1000)** y llegan hasta el prefijo **FEB (1111 1111 1011)**, aunque normalmente se utiliza el prefijo **FE80::/64**. Estas direcciones se utilizan para comunicarse entre nodos vecinos en un mismo enlace, y se configuran automáticamente. Un router IPv6 **nunca** reenvía trafico con prefijo local de enlace fuera del propio enlace. Un ejemplo de una dirección IPv6 local de enlace es:
+```
+FE80::21F:6CFF:FEB0:FD06
+```
+#### 6.4.4 Tipos de direcciones IPv6
+Independientemente del alcance que tengan, también se definen formas para entregar los datos a las interfaces de red:
+- Unicast (uno a uno): El paquete va dirigido para una sola interfaz específica.
+- Multicast (muchos a uno): Esta metodología de direccionado hace un uso más eficiente de la red, utilizando un gran rango de direcciones. El paquete va dirigido a un grupo de interfaces que están subscriptas a un servicio.
+- Anycast (uno al más cercano): Varias interfaces comparten la misma IP y el router decide entregarle el paquete a la que esté físicamente más cerca.
+### 6.5 Prefijos de tipos de direcciones IPv6
 
-	
+| Tipo de dirección              | Prefijo binario                                 | Notación IPv6             | Explicacion                                                                         |
+| ------------------------------ | ----------------------------------------------- | ------------------------- | ----------------------------------------------------------------------------------- |
+| No especificada                | **00...0 (128 bits)**                           | **::/128**                | Los 128 bits están en cero, indica ausencia de IP.                                  |
+| Loopback                       | **00...1 (128 bits)**                           | **::1/128**               | 127 bits en 0 y 1 bit en 1. Identifica dirección loopback                           |
+| Multicast                      | **1111 1111**                                   | **FF00::/8**              | Primeros 8 bits en 1 (FF en hexa)                                                   |
+| Unicast local de enlace        | **1111 1110 10**                                | **FE80::/10**             | 10 bits fijos en 1111 1110 10 y se configura automaticamente                        |
+| ULA <br>(Unique Local Address) | **1111 110**                                    | **FC00::/7**              | Equivalente moderno de IPs privadas de IPv4. Rango de FC00 a FD00                   |
+| Unicast global                 | **001**                                         | **2000::/3**              | Proporcionan conectividad global pura de **extremo a extremo** a través de Internet |
+| IPv4 mapeada                   | **00...0:1111  1111:IPv4**                      | **::FFFF:139.1.56.3/128** | 80 bits en 0, 12 en 1 y la dirección IPv4                                           |
+| Prefijo de documentacion       | **0010 0000 0000 0001 <br>0000 1101 1011 1000** | **2001:DB8::/32**         | Rango reservado en los primeros 32 bits fijos con la estructura 2001:0DB8.          |
+### 6.6 Direcciones especiales
+- Dirección no especificada: Se representa con un **0:0:0:0:0:0:0:0** ó **::** y se utiliza solamente para indicar la ausencia de una dirección, como dirección origen cuando una dirección única todavía no ha sido determinada. Nunca debe ser asignada a una interfaz o utilizada como dirección destino.
+- Dirección loopback:  Se representa con un **0:0:0:0:0:0:0:1** ó **::1** y se utiliza para identificar una interfaz loopback, habilitando al nodo a enviarse paquetes a sí mismo. Es equivalente a la dirección IPv4 **127.X.X.X**.
+### 6.7 Unicast Global y Anycast
+- **Comparten formato:** Físicamente, una dirección Anycast y una Unicast Global se escriben exactamente igual y utilizan la misma estructura: los primeros bits corresponden al **prefijo de enrutamiento global**, seguidos por el **ID de subred** (64 bits en total para la red) y finalizando con los 64 bits del **ID de interfaz**.
+- **¿Cuál es la diferencia entonces?**
+    - Una dirección **Unicast Global** identifica a **una sola interfaz en el mundo**.
+    - Una dirección **Anycast** es una dirección unicast global que se le asigna a **múltiples interfaces de diferentes nodos** (generalmente servidores que dan el mismo servicio, como DNS o servidores web en distintas partes del mundo).
+- **El enrutamiento:** Cuando un cliente envía un paquete a una dirección Anycast, los routers intermedios de Internet deciden de forma dinámica cuál es el servidor Anycast más cercano físicamente (utilizando la ruta más corta en sus tablas) y le entregan el paquete únicamente a ese dispositivo.
+- **El prefijo global y la jerarquía de Internet**
+	- **La sumarización hacia arriba:** Las direcciones globales unicast utilizan un esquema de direccionamiento estrictamente jerárquico y ordenado. Esto habilita que las rutas se puedan ir **resumiendo (sumarizando) hacia arriba** en la topología.
+	- **El rol del ISP:** El router local le avisa al router del ISP un rango de redes; el ISP junta los rangos de todos sus clientes y publica un prefijo mucho más pequeño (por ejemplo, un `/32`) hacia la troncal de Internet. Esto evita que las tablas de encaminamiento de los routers centrales del mundo colapsen, permitiéndoles procesar el tráfico a velocidades más altas.
+### 6.8 Métodos de configuración de direcciones IPv6
+Existen tres maneras de asignarle direcciones IP a los dispositivos en IPv6:
+- **Configuración manual:** El administrador de red configura manualmente la dirección IP completa en el host (como se hace de forma estática).
+- **Autoconfiguración SIN estado (SLAAC):** El dispositivo genera de manera autónoma su propia dirección IPv6 combinando información de red que recibe de un router con un identificador de interfaz propio, sin que ningún servidor lleve un registro de qué IP se le dio a cada host.
+- **Autoconfiguración CON estado (DHCPv6):** Un servidor centralizado DHCPv6 asigna la dirección de forma completa y mantiene un registro exacto de a qué dispositivo le entregó cada IP.
+#### 6.8.1 Autoconfiguración SIN estado (SLAAC)
+Permite que cualquier computadora se conecte a la red y obtenga conectividad de inmediato de la siguiente manera:
+- **¿Cómo aprende los datos de red?** Los routers de la red envían periódicamente mensajes llamados **Router Advertisements (RA)**. Al escucharlos, el host en su fase de inicialización aprende automáticamente:
+    - El **prefijo de red** de la subred local.
+    - La dirección del **router por defecto** (puerta de enlace).
+    - El **límite de saltos** (equivalente al TTL).
+    - La **MTU** del enlace local.
+    - El **tiempo de vida** o validez de la dirección.
+- **Reglas y roles:**
+    - Los routers y servidores de la empresa **no se autoconfiguran**; siempre deben configurarse de forma manual.
+    - La dirección **local de enlace (Link-Local)** se genera y configura de forma automática en todas las interfaces de los nodos al arrancar.
+    - Para crear una **dirección Unicast Global**, el host escucha el prefijo de red que anuncia el router y lo combina con su propio ID de interfaz de 64 bits utilizando dos técnicas opcionales:
+        1. **Dirección EUI-64:** Genera el ID basándose en la dirección MAC física de su placa de red (un método predecible y más inseguro).
+        2. **Número aleatorio:** El sistema operativo genera un valor al azar y envía un ping de prueba para verificar que nadie más lo esté usando antes de asignárselo.
+- **Proceso EUI-64**
+	Dado que las direcciones MAC físicas tienen **48 bits** y se necesita un ID de interfaz de **64 bits**, el estándar IEEE define el siguiente mecanismo:
+	1. **División:** Se toma la dirección MAC de la placa de red y se divide exactamente a la mitad (separando los 24 bits del identificador del fabricante de los 24 bits del número de serie).
+	2. **Inserción:** Justo en el medio de ambas mitades, se inyecta la combinación hexadecimal fija **0xFFFE** (que equivale a 16 bits de relleno).
+	3. **Modificación del bit universal:** Se localiza el **bit número 7** (contando de izquierda a derecha desde el inicio de la MAC) y **se lo configura en 1 (encendido)**. Este cambio garantiza que el ID resultante sea único a nivel global.
+### 6.9 Configuración en Linux y Windows
+#### GNU/Linux
+- Formas para asignar una dirección IP a una interfaz:
+```
+  ifconfig eth0 add fd00::50:10/64
+```
+
+```
+ip addr add fd00::50:10/64 dev eth0
+```
+
+- Visualizar la configuración de una interfaz de red:
+```
+ifconfig <Nombre de la interfaz>
+```
+![[Pasted image 20260903221826.png]]
+- Visualizar la configuración de interfaces activas con direcciones IPv6:
+![[Pasted image 20260903230017.png]]
+#### Windows
+![[Pasted image 20260903230148.png]]
+![[Pasted image 20260903230204.png]]
+Y se verifica con `ipconfig /all`
+![[Pasted image 20260903230241.png]]
+La configuracion se puede visualizar con `netsh interface ipv6 show address`
+![[Pasted image 20260903230328.png]]
+### 6.10 Captura de tráfico con Wireshark
+![[Pasted image 20260903230451.png]]
+![[Pasted image 20260903230505.png]]
+## 7. RARP, BOOTP, DHCP y direccionamiento estático y dinámico
+### 7.1 Direccionamiento estático
+Consiste en ir computadora por computadora introduciendo manualmente la dirección IP, máscara de subred, puerta de enlace y DNS en las propiedades de red.
+- **Cómo funciona:** Una vez configurado de esta forma, el dispositivo mantiene la misma IP de manera permanente y esta no se modifica al reiniciar el equipo.
+- **Ventaja:** Le brinda al administrador un control absoluto y estricto sobre qué IP tiene cada dispositivo en la red (por eso es el método obligatorio para servidores, impresoras o interfaces de routers).
+- **Desventaja:** No permite la movilidad. Si se mueve una computadora a otra área conectada a un switch diferente, la IP no coincidirá con la nueva subred, perderá la conectividad y habrá que reconfigurarla a mano.
+### 7.2 Direccionamiento Dinámico
+Consiste en la asignación automática y transparente de los parámetros de red a los dispositivos a medida que se conectan.
+- **Cómo funciona:** El usuario simplemente activa la opción de _"Obtener una dirección IP automáticamente"_ en su sistema operativo, y un protocolo se encarga de negociar y entregarle toda la configuración.
+- **Ventaja:** Facilita enormemente los traslados de equipos y la movilidad de los usuarios. 
+- **Desventaja:** Requiere configurar y mantener activo un servidor centralizado (o servicio dentro del router) para que gestione y reparta las direcciones libres a los clientes.
+### 7.3 RARP
+El protocolo **RARP (Reverse Address Resolution Protocol)** es el opuesto directo de ARP: mientras que ARP se usa para averiguar una dirección MAC a partir de una IP conocida, RARP hace exactamente lo contrario, resolviendo una dirección IP a partir de una MAC física conocida.
+**1. Configuración de IP para estaciones de trabajo sin disco**
+RARP fue diseñado en los inicios de las redes de datos para dar conectividad a dispositivos que **carecían de disco rígido o almacenamiento persistente**. Al no tener un disco donde guardar un sistema operativo o un archivo de configuración de red, estas máquinas no sabían qué IP tenían al encenderse. RARP le permite al dispositivo lanzar una petición al medio físico diciendo: _"Hola, mi dirección física es esta MAC. ¿Qué dirección IP me corresponde para poder hablar en la red?"_.
+**2. Requerimiento de una tabla en el servidor RARP**
+Para que el protocolo funcione, debe existir un **servidor RARP** activo en la red. El administrador de la red debe configurar y mantener manualmente un archivo de texto o tabla en este servidor, donde escribe explícitamente cada dirección MAC de la empresa junto con la IP que tiene permitida usar.
+**3. Mapeo estático dirección IP – MAC**
+La asignación que realiza RARP es de carácter **estático y permanente**. El servidor siempre le entregará la misma dirección IP al dispositivo que tenga esa MAC específica. Esto presenta serias limitaciones de administración:
+- Si una computadora se traslada físicamente a otra oficina, su IP estática asignada en el servidor ya no coincidirá con la nueva red y no tendrá conectividad.
+- Ante cualquier cambio físico o reemplazo de una placa de red dañada (lo que cambia la MAC de fábrica), el administrador se ve obligado a actualizar manualmente la tabla en el servidor.
+**4. Un servidor RARP por cada LAN**
+Esta es la mayor desventaja y limitación del protocolo. RARP es un protocolo que **opera directamente en la Capa de Enlace (Capa 2)**. Como los routers trabajan en la Capa de Red (Capa 3), **tienen prohibido reenviar tramas de broadcast de capa 2 hacia otras redes**. Por lo tanto, hay que **instalar y mantener un servidor RARP físico en cada una de las redes LAN** de la empresa.
+**5. Reemplazo por BOOTP**
+Debido a que RARP requería un servidor por LAN, no permitía la asignación dinámica de IPs y **solo entregaba la dirección IP** (dejando fuera parámetros vitales como la máscara de subred, la puerta de enlace/gateway y los servidores DNS), fue **reemplazado por el protocolo BOOTP**.
+### 7.4 BOOTP
+#### 7.4.1 **Características de BOOTP**
+- **Pensado para equipos sin disco:** Al igual que RARP, se diseñó originalmente para terminales o estaciones de trabajo tontas que no tenían disco rígido para almacenar su propia configuración de red ni su sistema operativo.
+- **Múltiples parámetros de configuración:** A diferencia de RARP (que solo entregaba la IP), BOOTP es capaz de entregar un "combo" de parámetros indispensables para navegar: **la dirección IP, la máscara de subred, la dirección del gateway/puerta de enlace y los servidores DNS**.
+- **Traspasa routers (Multired):** Como opera sobre UDP/IP, las solicitudes de BOOTP **sí pueden viajar entre diferentes redes locales LAN** utilizando agentes de retransmisión (Relay). Un único servidor central puede atender a toda la empresa.
+- **Mapeo Estático:** El servidor sigue basándose en un archivo o tabla de configuración donde el administrador asocia manualmente cada dirección MAC física con una dirección IP fija. La asignación es **estática y permanente**.
+#### 7.4.2 Pasos del proceso BOOTP
+1. El cliente determina su dirección MAC
+2. El cliente envía un mensaje BOOTP en un segmento UDP
+3. El servidor busca la MAC en su archivo de configuración
+4. El servidor completa los campos en el mensaje y se lo envía al cliente (dirección IP y ruta del archivo del S.O. a descargar)
+5. El cliente obtiene su dirección IP
+6. El cliente obtiene el S.O. desde un servidor TFTP
+7. El cliente carga el S.O. y se inicializa a sí mismo
+#### 7.4.3 **Desventajas: ¿Por qué tuvimos que migrar a DHCP?**
+Aunque BOOTP solucionó el problema de tener un servidor por LAN, seguía arrastrando las ineficiencias del direccionamiento estático:
+- **Carga manual obligatoria:** El administrador de red tiene que registrar manualmente cada par IP-MAC en el servidor. 
+- **No facilita la movilidad física:** Si trasladamos una PC de un switch a otro (en otra subred), su IP estática asignada en la tabla del servidor ya no coincidirá con la nueva subred. Para que funcione, el administrador tiene que reconfigurar manualmente la tabla en el servidor central actualizando la IP asociada a esa MAC.
+- **No permite la asignación dinámica:** BOOTP no "alquila" direcciones temporales ni las recupera cuando un equipo se apaga. Las IPs quedan reservadas para siempre para esa MAC específica, lo que impide reutilizarlas y optimizar el direccionamiento en redes con muchos dispositivos.

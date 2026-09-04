@@ -11,14 +11,12 @@
             "id": "b2ed500ecd173d5d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "RED - Redes de Datos/Resumenes/Mi Resumen (2do parcial).md",
-                "mode": "source",
-                "source": false
+                "file": "RED - Redes de Datos/Resumenes/img/Pasted image 20260903195714.png"
               },
-              "icon": "lucide-file",
-              "title": "Mi Resumen (2do parcial)"
+              "icon": "lucide-image",
+              "title": "Pasted image 20260903195714"
             }
           }
         ]
@@ -182,20 +180,19 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "b2ed500ecd173d5d",
+  "active": "07bc74e809c85a01",
   "lastOpenFiles": [
-    "Pasted image 20260831210226.png",
-    "Pasted image 20260831210202.png",
-    "Pasted image 20260831204448.png",
-    "Pasted image 20260831204438.png",
-    "Pasted image 20260831204418.png",
-    "Pasted image 20260831204128.png",
-    "Pasted image 20260831101459.png",
-    "RED - Redes de Datos/Resumenes/img/ComunicacionARP.png",
     "RED - Redes de Datos/Resumenes/Mi Resumen (2do parcial).md",
-    "Pasted image 20260412172334.png",
-    "RED - Redes de Datos/Resumenes/img/Pasted image 20260829194828.png",
-    "RED - Redes de Datos/Resumenes/img/Pasted image 20260829210822.png",
+    "RED - Redes de Datos/Resumenes/img/Pasted image 20260903230505.png",
+    "RED - Redes de Datos/Resumenes/img/Pasted image 20260903230451.png",
+    "RED - Redes de Datos/Resumenes/img/Pasted image 20260903230328.png",
+    "RED - Redes de Datos/Resumenes/img/Pasted image 20260903230241.png",
+    "RED - Redes de Datos/Resumenes/img/Pasted image 20260903230204.png",
+    "RED - Redes de Datos/Resumenes/img/Pasted image 20260903230148.png",
+    "RED - Redes de Datos/Resumenes/img/Pasted image 20260903230017.png",
+    "RED - Redes de Datos/Resumenes/img/Pasted image 20260903221826.png",
+    "RED - Redes de Datos/Resumenes/img/Pasted image 20260903220226.png",
+    "RED - Redes de Datos/Resumenes/img/Pasted image 20260903220008.png",
     "ICS - Ingenieria y Calidad de Software/Notas de Clases/Teorico.md",
     "RED - Redes de Datos/Resumenes/img",
     "ICS - Ingenieria y Calidad de Software/Notas de Clases/Practico.md",
