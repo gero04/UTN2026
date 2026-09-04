@@ -825,3 +825,33 @@ Aunque BOOTP solucionó el problema de tener un servidor por LAN, seguía arrast
 - **Carga manual obligatoria:** El administrador de red tiene que registrar manualmente cada par IP-MAC en el servidor. 
 - **No facilita la movilidad física:** Si trasladamos una PC de un switch a otro (en otra subred), su IP estática asignada en la tabla del servidor ya no coincidirá con la nueva subred. Para que funcione, el administrador tiene que reconfigurar manualmente la tabla en el servidor central actualizando la IP asociada a esa MAC.
 - **No permite la asignación dinámica:** BOOTP no "alquila" direcciones temporales ni las recupera cuando un equipo se apaga. Las IPs quedan reservadas para siempre para esa MAC específica, lo que impide reutilizarlas y optimizar el direccionamiento en redes con muchos dispositivos.
+### 7.5 DHCP
+Dynamic Host Configuration Protocol presenta 3 metodos de asignacion de direcciones IP:
+- Manual: La direccion IP la asigna el administrador de la red y DHCP se la entrega al host
+- Automatica: El servidor selecciona una dirección IP de las disponibles y se la asigna en forma permanente al cliente.
+- Dinamica: El servidor asigna una direccion IP al cliente durante un tiempo limitado o hasta que el cliente la libera. Permite la reutilizacion de direcciones IP.
+#### 7.5.1 Funcionamiento del DHCP
+Tiene un rango de direcciones permitidas como vimos en la otra forma de configuración nada más que se diferencia en que tiene un tiempo limitado de funcionamiento por lo que la misma es reutilizable después. Este método agiliza las conexiones y además puede tener más dispositivos que direcciones disponibles.
+Para empezar el Host debe entender que está utilizando este protocolo y que va a intentar encontrar el servidor DHCP. Esto quiere decir que hace un “Broadcast” en toda la Red para poder encontrar a quien le asigne la IPv6. El primer mensaje entonces se llama **DHCP Discover** y busca que el servidor le conteste con "aca estoy papá y te ofrezco esta IP.” Este ofrecimiento se llama como adivinaron **DHCP Offer** y nuestro Host debe responder al servidor un “Acepto ESTA IP que me mandaste no Fake” (**DHCP Request**) y finalmente un **DHCP ACK** que da a entender que el servidor sabe que ese Host (MAC) está asignada a dicha IP.
+Porque aclaro esto? Porque en una práctica se habla que podemos tener más de un servidor en una red con mismo o diferente rango de direcciones. Entonces este tipo de mensajes son globales y todos se enteran, entonces si 2 servidores le mandan un Offer después de que “escuchan” el discover el host le responde al primero y el segundo lo descarta. Entonces este Request para uno de los servidores no va a tener sentido porque no va a ser correspondido porque no es la IP que le ofreció. Y asi como yo cuando no soy correspondido se va a quedar triste esperando el siguiente discover de un host libre y fiel (#ClaudiaVolve).
+Vale destacar que el Request también se utiliza para renovar el tiempo de validez de nuestra IPv6 asignada. Nuestro profe de práctico dijo que empieza a solicitar cuando está a mitad de su tiempo de vida por si pasa algo que no permite solicitarlo.
+Después existen cosas como el **DHCP NACK** que es cuando se le niega como Pedro lo nego a Jesus 3 veces, el **DHCP Release** que es cuando un equipo se está por desconectar/apagar avisa que no usa más la dirección y que cancela la suscripción. Finalmente está el **DHCP Inform** donde el cliente consulta al servidor la configuracion local.
+El último detalle destacar es que si el servidor está en diferente red a los equipos que configura es necesario configurar en el router el DHCP relay para que pueda mandar mensajes fuera del mismo y obtener su configuración. Entonces:
+- DHCP Discover: 
+	- Permite localizar servidores DHCP
+	- Contiene un ID de transacción → número aleatorio elegido por el cliente para asociar mensajes y respuestas entre un cliente y un servidor
+![[Pasted image 20260904192444.png]]
+
+![[Pasted image 20260904192510.png]]
+- DHCP Offer: el servidor responde con un mensaje de ofrecimiento de parámetros de configuración (IP, máscara, Gateway, tiempo de alquiler, etc.)
+![[Pasted image 20260904192614.png]]
+
+![[Pasted image 20260904192637.png]]
+- DHCP Request: el cliente selecciona una oferta de configuración y se la solicita al servidor. También se utiliza para extender el tiempo de alquiler de una dirección IP
+![[Pasted image 20260904192711.png]]
+- DHCP Ack: el servidor confirma la configuración ofrecida anteriormente
+![[Pasted image 20260904192731.png]]
+- DHCP Nack: el servidor le niega al cliente la asignación de los parámetros IP porque no es válida o porque la posee otro cliente
+- DHCP Decline: el cliente informa al servidor que la dirección IP ofrecida ya está en uso
+- DHCP Release: el cliente informa al servidor que libera la dirección IP y cancela el tiempo restante de alquiler
+- DHCP Inform: el cliente consulta al servidor la configuración local
