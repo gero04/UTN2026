@@ -833,25 +833,79 @@ Dynamic Host Configuration Protocol presenta 3 metodos de asignacion de direccio
 #### 7.5.1 Funcionamiento del DHCP
 Tiene un rango de direcciones permitidas como vimos en la otra forma de configuración nada más que se diferencia en que tiene un tiempo limitado de funcionamiento por lo que la misma es reutilizable después. Este método agiliza las conexiones y además puede tener más dispositivos que direcciones disponibles.
 Para empezar el Host debe entender que está utilizando este protocolo y que va a intentar encontrar el servidor DHCP. Esto quiere decir que hace un “Broadcast” en toda la Red para poder encontrar a quien le asigne la IPv6. El primer mensaje entonces se llama **DHCP Discover** y busca que el servidor le conteste con "aca estoy papá y te ofrezco esta IP.” Este ofrecimiento se llama como adivinaron **DHCP Offer** y nuestro Host debe responder al servidor un “Acepto ESTA IP que me mandaste no Fake” (**DHCP Request**) y finalmente un **DHCP ACK** que da a entender que el servidor sabe que ese Host (MAC) está asignada a dicha IP.
+![[Pasted image 20260905223927.png]]
 Porque aclaro esto? Porque en una práctica se habla que podemos tener más de un servidor en una red con mismo o diferente rango de direcciones. Entonces este tipo de mensajes son globales y todos se enteran, entonces si 2 servidores le mandan un Offer después de que “escuchan” el discover el host le responde al primero y el segundo lo descarta. Entonces este Request para uno de los servidores no va a tener sentido porque no va a ser correspondido porque no es la IP que le ofreció. Y asi como yo cuando no soy correspondido se va a quedar triste esperando el siguiente discover de un host libre y fiel (#ClaudiaVolve).
 Vale destacar que el Request también se utiliza para renovar el tiempo de validez de nuestra IPv6 asignada. Nuestro profe de práctico dijo que empieza a solicitar cuando está a mitad de su tiempo de vida por si pasa algo que no permite solicitarlo.
 Después existen cosas como el **DHCP NACK** que es cuando se le niega como Pedro lo nego a Jesus 3 veces, el **DHCP Release** que es cuando un equipo se está por desconectar/apagar avisa que no usa más la dirección y que cancela la suscripción. Finalmente está el **DHCP Inform** donde el cliente consulta al servidor la configuracion local.
-El último detalle destacar es que si el servidor está en diferente red a los equipos que configura es necesario configurar en el router el DHCP relay para que pueda mandar mensajes fuera del mismo y obtener su configuración. Entonces:
-- DHCP Discover: 
+El último detalle destacar es que si el servidor está en diferente red a los equipos que configura es necesario configurar en el router el DHCP relay para que pueda mandar mensajes fuera del mismo y obtener su configuración. 
+![[Pasted image 20260905223947.png]]
+#### 7.5.2 Tipos de mensajes DHCP
+- **DHCP Discover**: 
 	- Permite localizar servidores DHCP
 	- Contiene un ID de transacción → número aleatorio elegido por el cliente para asociar mensajes y respuestas entre un cliente y un servidor
 ![[Pasted image 20260904192444.png]]
 
 ![[Pasted image 20260904192510.png]]
-- DHCP Offer: el servidor responde con un mensaje de ofrecimiento de parámetros de configuración (IP, máscara, Gateway, tiempo de alquiler, etc.)
+
+- **DHCP Offer**: el servidor responde con un mensaje de ofrecimiento de parámetros de configuración (IP, máscara, Gateway, tiempo de alquiler, etc.)
 ![[Pasted image 20260904192614.png]]
 
 ![[Pasted image 20260904192637.png]]
-- DHCP Request: el cliente selecciona una oferta de configuración y se la solicita al servidor. También se utiliza para extender el tiempo de alquiler de una dirección IP
+
+- **DHCP Request**: el cliente selecciona una oferta de configuración y se la solicita al servidor. También se utiliza para extender el tiempo de alquiler de una dirección IP
 ![[Pasted image 20260904192711.png]]
-- DHCP Ack: el servidor confirma la configuración ofrecida anteriormente
+
+- **DHCP Ack**: el servidor confirma la configuración ofrecida anteriormente
 ![[Pasted image 20260904192731.png]]
-- DHCP Nack: el servidor le niega al cliente la asignación de los parámetros IP porque no es válida o porque la posee otro cliente
-- DHCP Decline: el cliente informa al servidor que la dirección IP ofrecida ya está en uso
-- DHCP Release: el cliente informa al servidor que libera la dirección IP y cancela el tiempo restante de alquiler
-- DHCP Inform: el cliente consulta al servidor la configuración local
+- **DHCP Nack**: el servidor le niega al cliente la asignación de los parámetros IP porque no es válida o porque la posee otro cliente
+- **DHCP Decline**: el cliente informa al servidor que la dirección IP ofrecida ya está en uso
+- **DHCP Release**: el cliente informa al servidor que libera la dirección IP y cancela el tiempo restante de alquiler
+- **DHCP Inform**: el cliente consulta al servidor la configuración local
+#### 7.5.3 Parámetros configurables en DHCP
+**DHCP** es un protocolo sumamente robusto porque, en lugar de limitarse a entregar una dirección IP, le provee al cliente un "combo" completo de configuración para que pueda integrarse y navegar de inmediato en la red. Entre muchos parámetros configurables, se destacan:
+- **Dirección IP:** Es el identificador lógico único que se le asigna a la interfaz de red del dispositivo para que pueda comunicarse con otros hosts.
+- **Máscara de subred:** Parámetro inseparable de la IP que indica a los equipos qué porción de su dirección identifica a la red y qué parte identifica al host.
+- **Puerta de enlace (Default Gateway):** Es la dirección IP de la interfaz del router conectada a la red local; sirve de "puerta" de salida para todos los paquetes de datos dirigidos hacia otras redes o Internet.
+- **Dirección del servidor DNS:** IP del servidor encargado de traducir nombres de dominio comprensibles para humanos (como google.com) en direcciones IP lógicas para que el dispositivo pueda encapsular los datos.
+- **Nombre DNS:** El sufijo o nombre de dominio local que identifica el entorno organizativo de la red a la que se une el host.
+- **MTU para la interfaz:** (Maximum Transmission Unit) Define el tamaño máximo en bytes de la unidad de datos que la placa de red física puede transmitir por paquete sin fragmentar.
+- **Servidores NTP:** Dirección de un servidor de hora para que todos los dispositivos de la organización sincronicen sus relojes internos automáticamente.
+- **Servidor SMTP:** Dirección del servidor de correo saliente de la organización para gestionar la transferencia de mensajes de email.
+- **Servidor TFTP:** Dirección de un servidor de transferencia de archivos liviano, esencial si el cliente es una terminal sin disco y necesita descargar su sistema operativo o configuraciones iniciales al arrancar.
+#### 7.5.4 DHCP Relay
+Cuando una computadora se inicia y está configurada para obtener sus parámetros lógicos de manera dinámica, envía un mensaje de **DHCP Discover** por difusión (**broadcast**) para localizar servidores disponibles. Sin embargo, por definición de diseño, **los routers dividen los dominios de broadcast y tienen estrictamente prohibido reenviar tramas de difusión hacia otras redes**. Si el servidor DHCP centralizado de una empresa se encuentra físicamente en una LAN diferente (detrás de un router), el mensaje DHCP del cliente jamás le llegará, dejándolo incomunicado.
+Para no tener que instalar y mantener un costoso servidor DHCP físico en cada una de las subredes de una organización, se configura la función de **DHCP Relay** en la interfaz del router local (o en un servidor intermedio que actúe como pasarela).
+Esto nos permite:
+- **Centralizar la administración:** Un único servidor DHCP centralizado puede gestionar y asignar direccionamiento a múltiples redes LAN distintas.
+- **Múltiples Pools:** En dicho servidor central se configuran diferentes rangos (pools) de direcciones IP, uno específico para cada subred de la organización.
+**¿Cómo funciona? El proceso paso a paso** Basándonos en la topología que se observa en la próxima imagen:
+1. **Petición local:** El cliente (ej. la PC-D de la LAN 2) se inicia y envía un **DHCP Discover** como broadcast local buscando un servidor.
+2. **Interceptación y traducción:** El router de la LAN (configurado con la función DHCP Relay) escucha este broadcast en su interfaz física conectada a esa LAN (ej. la interfaz Giga 2). El router toma el paquete y **realiza una modificación crucial**:
+    - Completa el campo interno del protocolo llamado **relay agent IP address** **(dirección IP del agente de retransmisión)** con su propia IP de la interfaz por donde recibió el broadcast (la IP de Giga 2).
+    - **Transforma el mensaje de broadcast en un mensaje Unicast** (dirigido directamente a la IP privada del servidor DHCP central) y lo envía a través de la red.
+![[Pasted image 20260905225058.png]]
+3. **Selección de rango en el servidor:** El servidor DHCP recibe la solicitud Unicast. Al leer la IP que el router introdujo en el campo _relay agent IP address_, el servidor sabe exactamente de qué subred provino el paquete. Busca en su base de datos el pool correspondiente a esa red (la LAN 2), toma una IP libre y le envía el **DHCP Offer** de vuelta al router mediante Unicast.
+4. **Entrega final:** El router recibe la oferta Unicast y se la entrega de manera local al cliente (PC-D) en su LAN, completando la asignación de forma totalmente transparente para el usuario.
+![[Pasted image 20260905225156.png]]
+#### 7.5.5 Comandos relacionados (Windows)
+- Mostrar la información de configuración de red
+```
+> ipconfig
+```
+- Mostrar información detallada de configuración de red
+```
+> ipconfig /all
+```
+- Renovar todos los adaptadores
+```
+> ipconfig /renew
+```
+- Renovar cualquier conexion cuyo nombre comience con **EL**
+```
+> ipconfig /renew EL*
+```
+- Liberar todas las conexiones que contengan la palabra **Con**
+```
+> ipconfig /release *Con*
+```
+## 8. Encaminamiento
